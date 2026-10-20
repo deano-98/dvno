@@ -1,22 +1,80 @@
-import type { Metadata, Viewport } from 'next';
-import { Navbar } from '@/components/navigation/navbar';
-import { LenisProvider } from '@/components/lenis-provider';
-import { AnalyticsTools } from '@/components/analytics';
-import { siteConfig } from '@/lib/site';
-import './globals.css';
+import type { Metadata, Viewport } from "next";
+import { Navbar } from "@/components/navigation/navbar";
+import { LenisProvider } from "@/components/lenis-provider";
+import { AnalyticsTools } from "@/components/analytics";
+import { siteConfig } from "@/lib/site";
+import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: { default: 'Dean Chap — Digital Solutions Developer', template: '%s | Dean Chap' },
+  title: {
+    default: "Dean Chap — Digital Solutions Developer",
+    template: "%s | Dean Chap",
+  },
   description: siteConfig.description,
-  applicationName: 'Dean Chap — Digital Solutions',
-  openGraph: { type: 'website', url: siteConfig.url, title: 'Dean Chap — Digital Solutions Developer', description: siteConfig.description, siteName: 'Dean Chap' },
-  twitter: { card: 'summary_large_image', title: 'Dean Chap — Digital Solutions Developer', description: siteConfig.description },
-  ...(process.env.GOOGLE_SITE_VERIFICATION ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } } : {}),
+  applicationName: "Dean Chap — Digital Solutions",
+  openGraph: {
+    type: "website",
+    url: siteConfig.url,
+    title: "Dean Chap — Digital Solutions Developer",
+    description: siteConfig.description,
+    siteName: "Dean Chap",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dean Chap — Digital Solutions Developer",
+    description: siteConfig.description,
+  },
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
 };
 
-export const viewport: Viewport = { width: 'device-width', initialScale: 1, themeColor: '#f7f6f2' };
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#f7f6f2",
+};
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body><a className="skip-link" href="#main-content">Skip to content</a><LenisProvider /><Navbar /><main id="main-content">{children}</main><footer className="site-footer"><div className="footer-top"><a href="/" className="brand"><span className="brand-mark">d<span>.</span></span><span className="brand-name">dean chap<span> / digital solutions</span></span></a><p>Thoughtful technology.<br />Practical business outcomes.</p><a className="footer-top-link" href="/contact">Have a project in mind? <span>Let&apos;s talk ↗</span></a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Dean Chap</span><span>Built with purpose, not noise.</span><a href="/projects">Selected work ↗</a></div></footer><AnalyticsTools /></body></html>;
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="en">
+      <body>
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
+        <LenisProvider />
+        <Navbar />
+        <main id="main-content">{children}</main>
+        <footer className="site-footer">
+          <div className="footer-top">
+            <a href="/" className="brand">
+              <span className="brand-mark">
+                d<span>.</span>
+              </span>
+              <span className="brand-name">
+                dean chap<span> / digital solutions</span>
+              </span>
+            </a>
+            <p>
+              Thoughtful technology.
+              <br />
+              Practical business outcomes.
+            </p>
+            <a className="footer-top-link" href="/contact">
+              Have a project in mind? <span>Let&apos;s talk ↗</span>
+            </a>
+          </div>
+          <div className="footer-bottom">
+            <span>© {new Date().getFullYear()} Dean Chap</span>
+            <span>Built with purpose, not noise.</span>
+            <a href="/projects">Selected work ↗</a>
+          </div>
+        </footer>
+        <AnalyticsTools />
+      </body>
+    </html>
+  );
 }

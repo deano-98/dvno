@@ -31,12 +31,12 @@ Open http://localhost:3000.
 
 ## Environment variables
 
-| Variable | Required | Description |
-|---|---|---|
-| `NEXT_PUBLIC_SITE_URL` | Production | Canonical site origin, e.g. `https://your-domain.com`; no trailing slash |
+| Variable                      | Required                 | Description                                                                           |
+| ----------------------------- | ------------------------ | ------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL`        | Production               | Canonical site origin, e.g. `https://your-domain.com`; no trailing slash              |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | For direct business chat | Your WhatsApp number in international digits only, without `+`, spaces or punctuation |
-| `NEXT_PUBLIC_GA_ID` | Optional | GA4 measurement ID such as `G-XXXXXXXXXX` |
-| `GOOGLE_SITE_VERIFICATION` | Optional | Google Search Console HTML verification token |
+| `NEXT_PUBLIC_GA_ID`           | Optional                 | GA4 measurement ID such as `G-XXXXXXXXXX`                                             |
+| `GOOGLE_SITE_VERIFICATION`    | Optional                 | Google Search Console HTML verification token                                         |
 
 Never put private credentials in `NEXT_PUBLIC_*` variables. This project currently does not require a secret API key for its WhatsApp handoff.
 

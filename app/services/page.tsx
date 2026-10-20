@@ -1,21 +1,256 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { ArrowUpRight, Check, CircleHelp } from 'lucide-react';
-import { SectionHeading } from '@/components/ui/section-heading';
-import { ServiceCard } from '@/components/services/service-card';
-import { maintenance, services } from '@/data/services';
-import { CtaLink } from '@/components/ui/cta-link';
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowUpRight, Check, CircleHelp } from "lucide-react";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { ServiceCard } from "@/components/services/service-card";
+import { maintenance, services } from "@/data/services";
+import { CtaLink } from "@/components/ui/cta-link";
 
-export const metadata: Metadata = { title: 'Services & Pricing', description: 'Transparent website development, lead generation and custom business system packages from Dean Chap.' };
+export const metadata: Metadata = {
+  title: "Services & Pricing",
+  description:
+    "Transparent website development, lead generation and custom business system packages from Dean Chap.",
+};
 
 const faqs = [
-  ['How do payments work?', 'The standard schedule is 50% to begin, 30% at the agreed progress milestone, and 20% before launch. Milestones are confirmed in writing before work starts.'],
-  ['What counts as a revision?', 'Each package includes two revision rounds for changes within the agreed scope. New features or a material change in direction may need a separate quote.'],
-  ['What happens after launch?', 'A 14–30 day defect-fix period can be agreed for bugs in the delivered scope. It does not cover new features, third-party outages, or unrelated changes. Optional monthly maintenance is available separately.'],
-  ['Are hosting and subscriptions included?', 'No. Domain registration, hosting, database services, paid CMS plans, professional email, booking tools and other third-party charges are separate. Expected recurring costs are discussed before work begins.'],
-  ['Can you quote for something outside these packages?', 'Yes. The Operations tier starts at $950, and the final price depends on integrations, data design, access controls, dashboards, testing and complexity. A short discovery conversation helps define the scope.'],
+  [
+    "How do payments work?",
+    "The standard schedule is 50% to begin, 30% at the agreed progress milestone, and 20% before launch. Milestones are confirmed in writing before work starts.",
+  ],
+  [
+    "What counts as a revision?",
+    "Each package includes two revision rounds for changes within the agreed scope. New features or a material change in direction may need a separate quote.",
+  ],
+  [
+    "What happens after launch?",
+    "A 14–30 day defect-fix period can be agreed for bugs in the delivered scope. It does not cover new features, third-party outages, or unrelated changes. Optional monthly maintenance is available separately.",
+  ],
+  [
+    "Are hosting and subscriptions included?",
+    "No. Domain registration, hosting, database services, paid CMS plans, professional email, booking tools and other third-party charges are separate. Expected recurring costs are discussed before work begins.",
+  ],
+  [
+    "Can you quote for something outside these packages?",
+    "Yes. The Operations tier starts at $950, and the final price depends on integrations, data design, access controls, dashboards, testing and complexity. A short discovery conversation helps define the scope.",
+  ],
 ];
 
 export default function ServicesPage() {
-  return <><section className="page-hero section-wrap services-hero"><div className="page-hero-copy"><span className="eyebrow"><span className="eyebrow-dot" />SERVICES / CLEAR SCOPE, CLEAR PRICING</span><h1>Built for your next<br /><em>business milestone.</em></h1><p>I build modern, mobile-friendly websites designed to help businesses attract customers, generate enquiries, and streamline day-to-day operations. Every package includes responsive design, appropriate SEO, performance optimisation, and a clear focus on business growth.</p></div><div className="page-hero-side price-side"><span>STARTING AT</span><strong>$250</strong><p>Founding-client offer for a focused digital storefront. Scope and recurring costs are confirmed before work begins.</p><a href="#packages">Compare packages <ArrowUpRight size={15} /></a></div></section><section id="packages" className="section-wrap section-pad service-packages"><SectionHeading eyebrow="DEVELOPMENT PACKAGES" title="Choose the level that fits.">Founding-client offers are shown beside standard prices for transparency. Final scope, timeline and third-party costs are agreed in writing.</SectionHeading><div className="service-grid">{services.map((service) => <ServiceCard key={service.id} service={service} />)}</div><p className="pricing-footnote">* Prices are in USD. “From” prices are starting estimates; custom functionality may change the final quote. Founding-client pricing is an introductory offer, not a countdown promotion.</p></section><section className="maintenance-section"><div className="section-wrap section-pad"><div className="section-heading-row"><SectionHeading eyebrow="OPTIONAL AFTERCARE" title="Keep things running smoothly.">Maintenance is optional and separate from the initial development fee. Each plan includes the stated monthly allowance; additional work is quoted separately.</SectionHeading><span className="optional-badge">OPTIONAL ADD-ON</span></div><div className="maintenance-grid">{maintenance.map((plan, index) => <article className="maintenance-card" key={plan.name}><span className="maintenance-index">0{index + 1} / CARE PLAN</span><h3>{plan.name}</h3><div className="maintenance-price"><strong>{plan.price}</strong><span>{plan.period}</span></div><ul>{plan.items.map((item) => <li key={item}><Check size={15} />{item}</li>)}</ul><Link href="/contact?service=operations" className="text-link">Ask about this plan <ArrowUpRight size={15} /></Link></article>)}</div></div></section><section className="section-wrap section-pad costs-section"><div className="costs-intro"><span className="eyebrow"><span className="eyebrow-dot" />ONGOING COSTS</span><h2>Know what you&apos;ll pay for after launch.</h2><p>Development is a one-time project fee. Infrastructure and third-party services are separate recurring costs, and I&apos;ll confirm the expected setup with you before work begins.</p></div><div className="cost-list"><div><span>Domain registration & renewal</span><strong>$6–$30 / year</strong></div><div><span>Simple website hosting</span><strong>$0–$20 / month</strong></div><div><span>Database hosting</span><strong>$0–$25+ / month</strong></div><div><span>Third-party tools</span><strong>Provider-dependent</strong></div><p>Actual pricing depends on provider, usage, currency, and chosen services. Advanced applications may cost more. SEO and analytics setup are included where specified; paid advertising, paid SEO tools and ongoing campaigns are not included unless agreed separately.</p></div></section><section className="section-wrap section-pad terms-section"><SectionHeading eyebrow="WORKING TOGETHER" title="A straightforward process.">A clear agreement protects both sides and keeps delivery focused.</SectionHeading><div className="terms-grid"><article><span>01 / PAYMENT</span><h3>50 / 30 / 20</h3><p>50% deposit to commence, 30% at an agreed progress milestone, and 20% before launch.</p></article><article><span>02 / REVISIONS</span><h3>Two rounds included</h3><p>Revision rounds cover the agreed scope. Additional features and out-of-scope work are quoted separately.</p></article><article><span>03 / AFTER LAUNCH</span><h3>14–30 day defect window</h3><p>Agree a post-launch period for bugs in the delivered work. New features and unrelated changes are excluded.</p></article></div><p className="terms-note">The exact scope, delivery estimate, milestone definitions, ownership handover, and recurring costs are confirmed in writing before work begins.</p></section><section className="section-wrap section-pad faq-section"><div className="faq-heading"><span className="eyebrow"><span className="eyebrow-dot" />GOOD TO KNOW</span><h2>Questions before we start?</h2><p>If your requirements are a little different, let&apos;s talk through them.</p><CtaLink href="/contact" secondary>Ask a question</CtaLink></div><div className="faq-list">{faqs.map(([question, answer], index) => <details key={question} className="faq-item"><summary><span>{String(index + 1).padStart(2, '0')}</span>{question}<CircleHelp size={17} /></summary><p>{answer}</p></details>)}</div></section><section className="closing-cta closing-cta-compact"><div className="closing-cta-inner"><span className="eyebrow eyebrow-light"><span className="eyebrow-dot" />LET&apos;S FIND THE RIGHT FIT</span><h2>Start with a <em>conversation.</em></h2><p>Share the challenge. We&apos;ll define the right-sized next step.</p><CtaLink href="/contact">Discuss your project</CtaLink></div></section></>;
+  return (
+    <>
+      <section className="page-hero section-wrap services-hero">
+        <div className="page-hero-copy">
+          <span className="eyebrow">
+            <span className="eyebrow-dot" />
+            SERVICES / CLEAR SCOPE, CLEAR PRICING
+          </span>
+          <h1>
+            Built for your next
+            <br />
+            <em>business milestone.</em>
+          </h1>
+          <p>
+            I build modern, mobile-friendly websites designed to help businesses
+            attract customers, generate enquiries, and streamline day-to-day
+            operations. Every package includes responsive design, appropriate
+            SEO, performance optimisation, and a clear focus on business growth.
+          </p>
+        </div>
+        <div className="page-hero-side price-side">
+          <span>STARTING AT</span>
+          <strong>$250</strong>
+          <p>
+            Founding-client offer for a focused digital storefront. Scope and
+            recurring costs are confirmed before work begins.
+          </p>
+          <a href="#packages">
+            Compare packages <ArrowUpRight size={15} />
+          </a>
+        </div>
+      </section>
+      <section
+        id="packages"
+        className="section-wrap section-pad service-packages"
+      >
+        <SectionHeading
+          eyebrow="DEVELOPMENT PACKAGES"
+          title="Choose the level that fits."
+        >
+          Founding-client offers are shown beside standard prices for
+          transparency. Final scope, timeline and third-party costs are agreed
+          in writing.
+        </SectionHeading>
+        <div className="service-grid">
+          {services.map((service) => (
+            <ServiceCard key={service.id} service={service} />
+          ))}
+        </div>
+        <p className="pricing-footnote">
+          * Prices are in USD. “From” prices are starting estimates; custom
+          functionality may change the final quote. Founding-client pricing is
+          an introductory offer, not a countdown promotion.
+        </p>
+      </section>
+      <section className="maintenance-section">
+        <div className="section-wrap section-pad">
+          <div className="section-heading-row">
+            <SectionHeading
+              eyebrow="OPTIONAL AFTERCARE"
+              title="Keep things running smoothly."
+            >
+              Maintenance is optional and separate from the initial development
+              fee. Each plan includes the stated monthly allowance; additional
+              work is quoted separately.
+            </SectionHeading>
+            <span className="optional-badge">OPTIONAL ADD-ON</span>
+          </div>
+          <div className="maintenance-grid">
+            {maintenance.map((plan, index) => (
+              <article className="maintenance-card" key={plan.name}>
+                <span className="maintenance-index">
+                  0{index + 1} / CARE PLAN
+                </span>
+                <h3>{plan.name}</h3>
+                <div className="maintenance-price">
+                  <strong>{plan.price}</strong>
+                  <span>{plan.period}</span>
+                </div>
+                <ul>
+                  {plan.items.map((item) => (
+                    <li key={item}>
+                      <Check size={15} />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Link href="/contact?service=operations" className="text-link">
+                  Ask about this plan <ArrowUpRight size={15} />
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="section-wrap section-pad costs-section">
+        <div className="costs-intro">
+          <span className="eyebrow">
+            <span className="eyebrow-dot" />
+            ONGOING COSTS
+          </span>
+          <h2>Know what you&apos;ll pay for after launch.</h2>
+          <p>
+            Development is a one-time project fee. Infrastructure and
+            third-party services are separate recurring costs, and I&apos;ll
+            confirm the expected setup with you before work begins.
+          </p>
+        </div>
+        <div className="cost-list">
+          <div>
+            <span>Domain registration & renewal</span>
+            <strong>$6–$30 / year</strong>
+          </div>
+          <div>
+            <span>Simple website hosting</span>
+            <strong>$0–$20 / month</strong>
+          </div>
+          <div>
+            <span>Database hosting</span>
+            <strong>$0–$25+ / month</strong>
+          </div>
+          <div>
+            <span>Third-party tools</span>
+            <strong>Provider-dependent</strong>
+          </div>
+          <p>
+            Actual pricing depends on provider, usage, currency, and chosen
+            services. Advanced applications may cost more. SEO and analytics
+            setup are included where specified; paid advertising, paid SEO tools
+            and ongoing campaigns are not included unless agreed separately.
+          </p>
+        </div>
+      </section>
+      <section className="section-wrap section-pad terms-section">
+        <SectionHeading
+          eyebrow="WORKING TOGETHER"
+          title="A straightforward process."
+        >
+          A clear agreement protects both sides and keeps delivery focused.
+        </SectionHeading>
+        <div className="terms-grid">
+          <article>
+            <span>01 / PAYMENT</span>
+            <h3>50 / 30 / 20</h3>
+            <p>
+              50% deposit to commence, 30% at an agreed progress milestone, and
+              20% before launch.
+            </p>
+          </article>
+          <article>
+            <span>02 / REVISIONS</span>
+            <h3>Two rounds included</h3>
+            <p>
+              Revision rounds cover the agreed scope. Additional features and
+              out-of-scope work are quoted separately.
+            </p>
+          </article>
+          <article>
+            <span>03 / AFTER LAUNCH</span>
+            <h3>14–30 day defect window</h3>
+            <p>
+              Agree a post-launch period for bugs in the delivered work. New
+              features and unrelated changes are excluded.
+            </p>
+          </article>
+        </div>
+        <p className="terms-note">
+          The exact scope, delivery estimate, milestone definitions, ownership
+          handover, and recurring costs are confirmed in writing before work
+          begins.
+        </p>
+      </section>
+      <section className="section-wrap section-pad faq-section">
+        <div className="faq-heading">
+          <span className="eyebrow">
+            <span className="eyebrow-dot" />
+            GOOD TO KNOW
+          </span>
+          <h2>Questions before we start?</h2>
+          <p>
+            If your requirements are a little different, let&apos;s talk through
+            them.
+          </p>
+          <CtaLink href="/contact" secondary>
+            Ask a question
+          </CtaLink>
+        </div>
+        <div className="faq-list">
+          {faqs.map(([question, answer], index) => (
+            <details key={question} className="faq-item">
+              <summary>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                {question}
+                <CircleHelp size={17} />
+              </summary>
+              <p>{answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+      <section className="closing-cta closing-cta-compact">
+        <div className="closing-cta-inner">
+          <span className="eyebrow eyebrow-light">
+            <span className="eyebrow-dot" />
+            LET&apos;S FIND THE RIGHT FIT
+          </span>
+          <h2>
+            Start with a <em>conversation.</em>
+          </h2>
+          <p>
+            Share the challenge. We&apos;ll define the right-sized next step.
+          </p>
+          <CtaLink href="/contact">Discuss your project</CtaLink>
+        </div>
+      </section>
+    </>
+  );
 }

@@ -19,6 +19,7 @@ export type Project = {
   howItWorks: string;
   success: string[];
   note?: string;
+  outline: string;
 };
 
 export const projects: Project[] = [
@@ -54,7 +55,8 @@ export const projects: Project[] = [
       "Form validation and submission error rate",
       "Time staff spend clarifying order details",
     ],
-    note: "This project is in development. No live business results or production order volume are claimed.",
+    note: "This project is in development.",
+    outline: "Restaurant ordering experience with a browsable menu, basket interaction, order form, WhatsApp handoff, and a planned database record for submitted orders. The interface is designed around the customer journey rather than a static menu alone.",
   },
   {
     slug: "reeldon-timber",
@@ -87,6 +89,7 @@ export const projects: Project[] = [
     ],
     note:
       "The website is still in production. Quotation submission is not yet connected to a confirmed backend or CRM workflow, and no business performance results are claimed.",
+    outline: "Responsive business website presenting Reeldon's products, company background, quality standards, and supply capabilities in a structured, customer-focused experience. Clear contact and quotation calls to action help prospective customers move from product discovery to a direct enquiry.",
   },
   {
     slug: "ul-transport-services",
@@ -119,6 +122,7 @@ export const projects: Project[] = [
     ],
     note:
       "The website includes WhatsApp enquiry pathways and click-event tracking. No verified enquiry volumes, conversion improvements, or business results are claimed.",
+    outline: "Responsive website organised around services, school partnerships, fleet information, safety, and frequently asked questions. Strategically placed WhatsApp calls to action give visitors a direct way to discuss transport requirements with the business.",
   },
   {
     slug: "serverless-contact-form",
@@ -150,6 +154,7 @@ export const projects: Project[] = [
       "Monthly infrastructure cost",
     ],
     note: "Presented as architecture and implementation work; deployment and delivery metrics must be verified in the target AWS account.",
+    outline: "Serverless contact-form architecture using an HTTP API, Lambda processing, and SES for email delivery, with infrastructure managed as code and CI/CD checks planned into the workflow.",
   },
   {
     slug: "shopify-operations-automation",
@@ -175,6 +180,7 @@ export const projects: Project[] = [
       "Failed API updates requiring intervention",
     ],
     note: "Describes relevant contract development experience; specific savings and throughput figures are not available.",
+    outline: "Python and spreadsheet-based tooling to reduce repetitive Shopify catalogue and operations work.",
   },
   {
     slug: "cloud-architecture",
@@ -207,6 +213,7 @@ export const projects: Project[] = [
       "Adoption of documented architecture decisions",
     ],
     note: "A summary of architecture responsibilities; no confidential client architecture or unverified savings are disclosed.",
+    outline: "Cloud-native architecture work covering service boundaries, deployment automation, and cost-conscious infrastructure choices.",
   },
   {
     slug: "small-business-supplier",
@@ -217,6 +224,7 @@ export const projects: Project[] = [
       "A product-led catalogue and enquiry flow for suppliers who want customers to browse items and request an order without a payment gateway.",
     status: "Private",
     tags: ["Web App", "CMS", "WhatsApp", "SEO"],
+    outline: "A simple, mobile-friendly storefront for small businesses to showcase their products and receive enquiries via WhatsApp.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Sanity", "WhatsApp"],
     accent: "copper",
     problem:

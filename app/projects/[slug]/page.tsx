@@ -142,8 +142,7 @@ export default async function ProjectDetailPage({
             <span className="eyebrow">PROJECT SNAPSHOT</span>
             <h3>Built around the real workflow.</h3>
             <p>
-              Technology is only useful when it supports a clear goal. This case
-              study describes the approach and what should be validated next.
+              {project.outline}
             </p>
             {/* Visual separator between the summary and technology list. */}
             <div className="sidebar-divider" />

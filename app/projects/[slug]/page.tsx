@@ -37,6 +37,7 @@ export default async function ProjectDetailPage({
         <Link href="/projects" className="back-link">
           <ArrowLeft size={15} /> All projects
         </Link>
+        {/* Case-study title, summary, tags, and status. */}
         <div className="case-hero-copy">
           <span className="eyebrow">
             <span className="eyebrow-dot" />
@@ -47,6 +48,7 @@ export default async function ProjectDetailPage({
             <em>.</em>
           </h1>
           <p>{project.summary}</p>
+          {/* Project capabilities and technology tags. */}
           <div className="tag-list">
             {project.tags.map((tag) => (
               <span className="tag" key={tag}>
@@ -59,9 +61,11 @@ export default async function ProjectDetailPage({
         <ProjectVisual project={project} large />
       </section>
       <section className="case-content section-wrap">
+        {/* Main case-study sections alongside the project snapshot sidebar. */}
         <div className="case-main">
           <article className="case-block">
             <span className="case-block-index">01</span>
+            {/* Context and business problem addressed by the project. */}
             <div>
               <span className="eyebrow">THE CONTEXT</span>
               <h2>The business problem</h2>
@@ -70,6 +74,7 @@ export default async function ProjectDetailPage({
           </article>
           <article className="case-block">
             <span className="case-block-index">02</span>
+            {/* Description of the proposed solution. */}
             <div>
               <span className="eyebrow">THE APPROACH</span>
               <h2>The solution</h2>
@@ -78,10 +83,12 @@ export default async function ProjectDetailPage({
           </article>
           <article className="case-block">
             <span className="case-block-index">03</span>
+            {/* Implementation approach and technology stack. */}
             <div>
               <span className="eyebrow">UNDER THE HOOD</span>
               <h2>How it works</h2>
               <p>{project.howItWorks}</p>
+              {/* Technologies used in the project. */}
               <div className="stack-list">
                 {project.stack.map((item) => (
                   <span key={item}>{item}</span>
@@ -91,6 +98,7 @@ export default async function ProjectDetailPage({
           </article>
           <article className="case-block">
             <span className="case-block-index">04</span>
+            {/* Suggested success measures and any project-specific caveat. */}
             <div>
               <span className="eyebrow">MEASURE WHAT MATTERS</span>
               <h2>What success would look like</h2>
@@ -112,7 +120,9 @@ export default async function ProjectDetailPage({
             </div>
           </article>
         </div>
+        {/* Project summary card with stack and related contact action. */}
         <aside className="case-sidebar">
+          {/* Snapshot of the project and related next steps. */}
           <div className="case-sidebar-card">
             <span className="eyebrow">PROJECT SNAPSHOT</span>
             <h3>Built around the real workflow.</h3>
@@ -120,8 +130,10 @@ export default async function ProjectDetailPage({
               Technology is only useful when it supports a clear goal. This case
               study describes the approach and what should be validated next.
             </p>
+            {/* Visual separator between the summary and technology list. */}
             <div className="sidebar-divider" />
             <span className="sidebar-label">TECHNOLOGY</span>
+            {/* Technologies highlighted in the project snapshot. */}
             <div className="stack-list">
               {project.stack.map((item) => (
                 <span key={item}>{item}</span>
@@ -136,6 +148,7 @@ export default async function ProjectDetailPage({
         </aside>
       </section>
       <section className="next-project">
+        {/* Link to the next case study and a project discussion action. */}
         <div>
           <span className="eyebrow">
             <span className="eyebrow-dot" />

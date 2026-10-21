@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const faqs = [
   [
     "How do payments work?",
-    "The standard schedule is 50% to begin, 30% at the agreed progress milestone, and 20% before launch. Milestones are confirmed in writing before work starts.",
+    "The standard schedule is 50% to begin, 30% at the agreed progress milestone, and 20% before launch. Milestones are confirmed in writing before work starts. Method of payment will be agreed before work begins.",
   ],
   [
     "What counts as a revision?",
@@ -23,7 +23,7 @@ const faqs = [
   ],
   [
     "What happens after launch?",
-    "A 14–30 day defect-fix period can be agreed for bugs in the delivered scope. It does not cover new features, third-party outages, or unrelated changes. Optional monthly maintenance is available separately.",
+    "A 30-day defect-fix period can be agreed for bugs in the delivered scope. It does not cover new features, third-party outages, or unrelated changes. Optional monthly maintenance is available separately.",
   ],
   [
     "Are hosting and subscriptions included?",
@@ -39,6 +39,7 @@ export default function ServicesPage() {
   return (
     <>
       <section className="page-hero section-wrap services-hero">
+        {/* Services page introduction and package pricing summary. */}
         <div className="page-hero-copy">
           <span className="eyebrow">
             <span className="eyebrow-dot" />
@@ -56,6 +57,7 @@ export default function ServicesPage() {
             SEO, performance optimisation, and a clear focus on business growth.
           </p>
         </div>
+        {/* Starting price, scope context, and package comparison link. */}
         <div className="page-hero-side price-side">
           <span>STARTING AT</span>
           <strong>$250</strong>
@@ -76,10 +78,9 @@ export default function ServicesPage() {
           eyebrow="DEVELOPMENT PACKAGES"
           title="Choose the level that fits."
         >
-          Founding-client offers are shown beside standard prices for
-          transparency. Final scope, timeline and third-party costs are agreed
-          in writing.
+          All packages include a free 30-day review period after launch. A confirmation of the final scope, delivery estimate, and recurring costs will be provided in writing before work begins.
         </SectionHeading>
+        {/* Cards for the available development packages. */}
         <div className="service-grid">
           {services.map((service) => (
             <ServiceCard key={service.id} service={service} />
@@ -92,7 +93,9 @@ export default function ServicesPage() {
         </p>
       </section>
       <section className="maintenance-section">
+        {/* Optional maintenance plans and their inclusions. */}
         <div className="section-wrap section-pad">
+          {/* Maintenance section heading and optional-plan label. */}
           <div className="section-heading-row">
             <SectionHeading
               eyebrow="OPTIONAL AFTERCARE"
@@ -104,6 +107,7 @@ export default function ServicesPage() {
             </SectionHeading>
             <span className="optional-badge">OPTIONAL ADD-ON</span>
           </div>
+          {/* Grid of ongoing maintenance options. */}
           <div className="maintenance-grid">
             {maintenance.map((plan, index) => (
               <article className="maintenance-card" key={plan.name}>
@@ -111,6 +115,7 @@ export default function ServicesPage() {
                   0{index + 1} / CARE PLAN
                 </span>
                 <h3>{plan.name}</h3>
+                {/* Monthly cost and billing period for this plan. */}
                 <div className="maintenance-price">
                   <strong>{plan.price}</strong>
                   <span>{plan.period}</span>
@@ -132,6 +137,7 @@ export default function ServicesPage() {
         </div>
       </section>
       <section className="section-wrap section-pad costs-section">
+        {/* Explanation of ongoing infrastructure and provider costs. */}
         <div className="costs-intro">
           <span className="eyebrow">
             <span className="eyebrow-dot" />
@@ -144,19 +150,24 @@ export default function ServicesPage() {
             confirm the expected setup with you before work begins.
           </p>
         </div>
+        {/* Typical cost ranges and the note on provider-dependent pricing. */}
         <div className="cost-list">
+          {/* Estimated range for domain registration and renewal. */}
           <div>
             <span>Domain registration & renewal</span>
             <strong>$6–$30 / year</strong>
           </div>
+          {/* Estimated range for simple website hosting. */}
           <div>
             <span>Simple website hosting</span>
             <strong>$0–$20 / month</strong>
           </div>
+          {/* Estimated range for database hosting. */}
           <div>
             <span>Database hosting</span>
             <strong>$0–$25+ / month</strong>
           </div>
+          {/* Cost note for third-party tools and subscriptions. */}
           <div>
             <span>Third-party tools</span>
             <strong>Provider-dependent</strong>
@@ -176,6 +187,7 @@ export default function ServicesPage() {
         >
           A clear agreement protects both sides and keeps delivery focused.
         </SectionHeading>
+        {/* Summary of payment, revision, and post-launch terms. */}
         <div className="terms-grid">
           <article>
             <span>01 / PAYMENT</span>
@@ -195,7 +207,7 @@ export default function ServicesPage() {
           </article>
           <article>
             <span>03 / AFTER LAUNCH</span>
-            <h3>14–30 day defect window</h3>
+            <h3>30-day defect window</h3>
             <p>
               Agree a post-launch period for bugs in the delivered work. New
               features and unrelated changes are excluded.
@@ -209,6 +221,7 @@ export default function ServicesPage() {
         </p>
       </section>
       <section className="section-wrap section-pad faq-section">
+        {/* Frequently asked questions introduction and contact link. */}
         <div className="faq-heading">
           <span className="eyebrow">
             <span className="eyebrow-dot" />
@@ -223,6 +236,7 @@ export default function ServicesPage() {
             Ask a question
           </CtaLink>
         </div>
+        {/* Expandable answers to common service questions. */}
         <div className="faq-list">
           {faqs.map(([question, answer], index) => (
             <details key={question} className="faq-item">
@@ -237,6 +251,7 @@ export default function ServicesPage() {
         </div>
       </section>
       <section className="closing-cta closing-cta-compact">
+        {/* Final invitation to discuss the right project scope. */}
         <div className="closing-cta-inner">
           <span className="eyebrow eyebrow-light">
             <span className="eyebrow-dot" />

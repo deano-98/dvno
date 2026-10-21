@@ -12,9 +12,12 @@ export const metadata: Metadata = {
 
 function ContactFormFallback() {
   return (
-    <div className="contact-form form-loading">
-      <p>Loading project enquiry form…</p>
-    </div>
+    <>
+      {/* Loading placeholder shown while the enquiry form initializes. */}
+      <div className="contact-form form-loading">
+        <p>Loading project enquiry form…</p>
+      </div>
+    </>
   );
 }
 
@@ -22,6 +25,7 @@ export default function ContactPage() {
   return (
     <>
       <section className="contact-hero section-wrap">
+        {/* Contact introduction, direct channels, and response expectations. */}
         <div className="contact-hero-copy">
           <span className="eyebrow">
             <span className="eyebrow-dot" />
@@ -37,6 +41,7 @@ export default function ContactPage() {
             website, a smoother way to manage enquiries, or a custom tool to
             take friction out of daily work.
           </p>
+          {/* Direct links for WhatsApp and GitHub. */}
           <div className="contact-direct-links">
             <a
               href={whatsappUrl("Hi Dean, I would like to discuss a project.")}
@@ -65,11 +70,13 @@ export default function ContactPage() {
               <ArrowUpRight size={17} />
             </a>
           </div>
+          {/* Reassurance about the initial conversation. */}
           <div className="contact-response-note">
             <span className="availability-dot" />
             No pressure, no hard sell — just a practical conversation.
           </div>
         </div>
+        {/* Enquiry form panel. */}
         <div className="contact-form-wrap">
           <Suspense fallback={<ContactFormFallback />}>
             <ContactForm />
@@ -77,6 +84,7 @@ export default function ContactPage() {
         </div>
       </section>
       <section className="contact-bottom section-wrap">
+        {/* Closing summary of the kinds of projects available to discuss. */}
         <div>
           <span className="eyebrow">
             <span className="eyebrow-dot" />
@@ -88,6 +96,7 @@ export default function ContactPage() {
             <em>We&apos;ll work out the solution.</em>
           </h2>
         </div>
+        {/* Examples of common business problems the work can address. */}
         <div className="contact-bottom-list">
           <p>
             <span>01</span> A website that explains your offer and generates

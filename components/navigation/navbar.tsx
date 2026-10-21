@@ -7,9 +7,9 @@ import { usePathname } from "next/navigation";
 import { siteConfig, whatsappUrl } from "@/lib/site";
 
 const links = [
+  { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {
@@ -43,12 +43,13 @@ export function Navbar() {
             aria-label={`${siteConfig.name}, home`}
           >
             <span className="brand-mark">
-              d<span>.</span>
+              d.
             </span>
             <span className="brand-name">
-              dean chap<span> / digital solutions</span>
+              devo<span> / digital solutions</span>
             </span>
           </Link>
+          {/* Desktop navigation links and primary contact action. */}
           <div className="desktop-links">
             {links.map((link) => (
               <Link
@@ -74,17 +75,19 @@ export function Navbar() {
           </button>
         </nav>
       </header>
+      {/* Full-screen mobile navigation overlay, shown when the menu is open. */}
       <div
         id="mobile-navigation"
         className={`mobile-overlay ${open ? "is-open" : ""}`}
         aria-hidden={!open}
       >
+        {/* Mobile overlay header with the brand and close control. */}
         <div className="mobile-overlay-top">
           <Link href="/" className="brand" onClick={() => setOpen(false)}>
             <span className="brand-mark">
-              d<span>.</span>
+              d.
             </span>
-            <span className="brand-name">dean chap</span>
+            <span className="brand-name">devo</span>
           </Link>
           <button
             className="mobile-close"
@@ -94,6 +97,7 @@ export function Navbar() {
             <X size={22} />
           </button>
         </div>
+        {/* Mobile navigation destinations. */}
         <div className="mobile-overlay-links">
           <Link href="/" onClick={() => setOpen(false)}>
             <span>00</span> Home <ArrowUpRight />

@@ -12,6 +12,8 @@ export function SectionHeading({
   align?: "left" | "center";
 }) {
   return (
+  <>
+    {/* Reusable section title, eyebrow, and optional supporting copy. */}
     <div
       className={`section-heading ${align === "center" ? "text-center" : ""}`}
     >
@@ -22,5 +24,6 @@ export function SectionHeading({
       <h2>{title}</h2>
       {children ? <p>{children}</p> : null}
     </div>
+  </>
   );
 }

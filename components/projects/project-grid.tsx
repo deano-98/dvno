@@ -17,24 +17,28 @@ export function ProjectGrid({ limit }: { limit?: number }) {
   return (
     <>
       {!limit ? (
-        <div className="filter-row" aria-label="Filter projects">
-          {projectFilters.map((filter) => (
-            <button
-              key={filter}
-              className={`filter-pill ${active === filter ? "is-selected" : ""}`}
-              aria-pressed={active === filter}
-              onClick={() => setActive(filter)}
-            >
-              {filter}
-              <span>
-                {filter === "All"
-                  ? projects.length
-                  : projects.filter((p) => p.tags.includes(filter)).length}
-              </span>
-            </button>
-          ))}
-        </div>
+        <>
+          {/* Filter controls shown on the full projects page. */}
+          <div className="filter-row" aria-label="Filter projects">
+            {projectFilters.map((filter) => (
+              <button
+                key={filter}
+                className={`filter-pill ${active === filter ? "is-selected" : ""}`}
+                aria-pressed={active === filter}
+                onClick={() => setActive(filter)}
+              >
+                {filter}
+                <span>
+                  {filter === "All"
+                    ? projects.length
+                    : projects.filter((p) => p.tags.includes(filter)).length}
+                </span>
+              </button>
+            ))}
+          </div>
+        </>
       ) : null}
+      {/* Grid of projects matching the selected filter. */}
       <div className="project-grid">
         {visible.map((project) => (
           <ProjectCard key={project.slug} project={project} />

@@ -39,7 +39,9 @@ export default function HomePage() {
   return (
     <>
       <section className="hero section-wrap">
+        {/* Main headline, introduction, and calls to action. */}
         <div className="hero-copy">
+          {/* Current availability indicator. */}
           <div className="availability">
             <span className="availability-dot" />
             Available for selected projects
@@ -49,16 +51,18 @@ export default function HomePage() {
             I build digital solutions that move <em>businesses forward.</em>
           </h1>
           <p className="hero-intro">
-            I design and develop modern websites and practical software systems
-            that help businesses attract customers, streamline workflows, and
-            turn digital opportunities into measurable results.
+            From high-performing websites to custom software systems, 
+            I connect technology with real business needs to help companies attract customers, simplify operations, 
+            and grow with confidence.
           </p>
+          {/* Primary paths to discuss a project or view past work. */}
           <div className="hero-actions">
             <CtaLink href="/contact">Discuss your project</CtaLink>
             <CtaLink href="/projects" secondary>
               Explore my work
             </CtaLink>
           </div>
+          {/* Short summary of the developer's working principles. */}
           <div className="hero-proof">
             <span>
               <Check size={14} /> Business-first thinking
@@ -71,33 +75,42 @@ export default function HomePage() {
             </span>
           </div>
         </div>
+        {/* Abstract illustration showing connected business systems. */}
         <div
           className="hero-art"
           aria-label="Abstract illustration of connected business systems"
           role="img"
         >
+          {/* Background grid texture for the illustration. */}
           <div className="hero-art-grid" />
+          {/* Caption describing the illustration's progression. */}
           <div className="hero-art-caption">
             <span>FROM PROBLEM</span>
             <span>TO PRACTICAL SYSTEM</span>
           </div>
+          {/* Customer-facing web experience node. */}
           <div className="system-node node-web">
             <Globe2 />
             <span>Web experience</span>
             <small>Customer-facing</small>
           </div>
+          {/* Structured business data node. */}
           <div className="system-node node-data">
             <Database />
             <span>Useful data</span>
             <small>Structured records</small>
           </div>
+          {/* Connected operations workflow node. */}
           <div className="system-node node-flow">
             <Workflow />
             <span>Connected workflow</span>
             <small>Less friction</small>
           </div>
+          {/* Centerpiece representing the business-first approach. */}
           <div className="system-center">
+            {/* Decorative ring around the illustration's center. */}
             <div className="center-ring" />
+            {/* Studio monogram at the center of the illustration. */}
             <div className="center-monogram">
               d<span>.</span>
             </div>
@@ -120,6 +133,7 @@ export default function HomePage() {
             <circle cx="355" cy="170" r="4" />
             <circle cx="245" cy="380" r="4" />
           </svg>
+          {/* Three steps shown at the foot of the illustration. */}
           <div className="hero-art-foot">
             <span>01 — UNDERSTAND</span>
             <ArrowDownRight size={16} />
@@ -128,6 +142,7 @@ export default function HomePage() {
             <span>03 — IMPROVE</span>
           </div>
         </div>
+        {/* Location, availability, and in-page navigation beneath the hero. */}
         <div className="hero-bottomline">
           <span>INDEPENDENT DEVELOPER / HARARE & REMOTE</span>
           <a href="#approach">
@@ -137,14 +152,17 @@ export default function HomePage() {
       </section>
 
       <section className="trust-strip">
+        {/* First principle: understand the business problem. */}
         <div>
           <span className="strip-index">01</span>
           <p>Understand the business problem.</p>
         </div>
+        {/* Second principle: choose technology for the problem. */}
         <div>
           <span className="strip-index">02</span>
           <p>Choose the right technology.</p>
         </div>
+        {/* Third principle: aim for a measurable improvement. */}
         <div>
           <span className="strip-index">03</span>
           <p>Build for a measurable next step.</p>
@@ -155,28 +173,30 @@ export default function HomePage() {
         id="approach"
         className="section-wrap section-pad approach-section"
       >
+        {/* Section overview and link to the services page. */}
         <div className="approach-intro">
           <SectionHeading
             eyebrow="A PRACTICAL APPROACH"
-            title="Good technology should make work feel simpler."
+            title="Technology should simplify, not complicate."
           >
-            A website is often the beginning, not the whole solution. I look at
-            the customer journey and the workflow behind it — then build what
-            actually helps.
+            A website is only one part of the picture. I connect the experience people see with the systems that make it work — building digital solutions around real needs, not just appearances.
           </SectionHeading>
           <CtaLink href="/services" secondary>
             Explore services
           </CtaLink>
         </div>
+        {/* Three core capability areas. */}
         <div className="capability-grid">
           {capabilities.map((item, index) => (
             <article className="capability-item" key={item.title}>
+              {/* Capability number and icon. */}
               <div className="capability-top">
                 <span>0{index + 1}</span>
                 <item.icon size={24} strokeWidth={1.4} />
               </div>
               <h3>{item.title}</h3>
               <p>{item.copy}</p>
+              {/* Decorative divider at the end of the capability card. */}
               <div className="capability-rule" />
             </article>
           ))}
@@ -184,6 +204,7 @@ export default function HomePage() {
       </section>
 
       <section className="section-wrap section-pad work-section">
+        {/* Selected-project introduction and link to the full portfolio. */}
         <div className="section-heading-row">
           <SectionHeading
             eyebrow="SELECTED WORK"
@@ -201,7 +222,9 @@ export default function HomePage() {
       </section>
 
       <section className="dark-band">
+        {/* Decorative orbit behind the dark feature band. */}
         <div className="dark-band-orbit" />
+        {/* Statement of the studio's whole-system perspective. */}
         <div className="dark-band-content">
           <span className="eyebrow eyebrow-light">
             <span className="eyebrow-dot" />
@@ -211,15 +234,18 @@ export default function HomePage() {
             I build software with the <em>whole system</em> in mind.
           </h2>
           <p>
-            From the first customer click to the data and operations behind it,
-            the details should work together. That means choosing tools for a
-            reason, making trade-offs clear, and leaving room to improve.
+            From the first customer interaction to the data and workflows behind it, 
+            every part should work together. I focus on choosing the right tools for 
+            the problem, making thoughtful trade-offs, and building solutions that can 
+            adapt as needs evolve.
           </p>
           <Link href="/projects" className="text-link text-link-light">
             See how I approach projects <ArrowUpRight size={16} />
           </Link>
         </div>
+        {/* Three tiles summarizing the think, build, and learn process. */}
         <div className="dark-band-side">
+          {/* Understand the project context. */}
           <div className="code-tile">
             <span>01 / THINK</span>
             <Braces />
@@ -229,6 +255,7 @@ export default function HomePage() {
               the context.
             </strong>
           </div>
+          {/* Implement the solution end to end. */}
           <div className="code-tile">
             <span>02 / BUILD</span>
             <Code2 />
@@ -238,6 +265,7 @@ export default function HomePage() {
               end to end.
             </strong>
           </div>
+          {/* Measure outcomes and identify what to improve next. */}
           <div className="code-tile">
             <span>03 / LEARN</span>
             <ChartNoAxesCombined />
@@ -251,36 +279,40 @@ export default function HomePage() {
       </section>
 
       <section className="section-wrap section-pad about-section">
+        {/* About-section label and year marker. */}
         <div className="about-index">
           <span className="eyebrow">
             <span className="eyebrow-dot" />A LITTLE ABOUT ME
           </span>
           <span className="about-number">DC / 2026</span>
         </div>
+        {/* Developer background, approach, and portfolio call to action. */}
         <div className="about-main">
           <h2>
             Curious about the details.
             <br />
             <em>Focused on the outcome.</em>
           </h2>
+          {/* Biography and working philosophy in two columns. */}
           <div className="about-columns">
             <p>
-              I’m Dean, a software developer with a background in computer
-              science and hands-on experience across full-stack development,
-              databases, cloud infrastructure, integrations, and business
-              applications.
+              I’m Dean, a software developer with a computer science background 
+              and hands-on experience across full-stack development, databases, 
+              cloud infrastructure, integrations, and business applications.
             </p>
             <p>
-              I enjoy joining the dots between what a business needs and what
-              technology can do. I aim to build solutions that are clear to use,
-              sensible to maintain, and useful long after launch.
+              I enjoy connecting business needs with practical technology. 
+              My focus is on building digital solutions that are intuitive to use, 
+              reliable in practice, and straightforward to maintain as a business grows.
             </p>
           </div>
           <CtaLink href="/projects" secondary>
             Explore my projects
           </CtaLink>
         </div>
+        {/* Monogram, professional focus, and location details. */}
         <div className="about-aside">
+          {/* Decorative monogram mark. */}
           <div className="aside-mark">
             d<span>.</span>
           </div>
@@ -298,6 +330,7 @@ export default function HomePage() {
       </section>
 
       <section className="section-wrap section-pad home-services">
+        {/* Services overview heading and package link. */}
         <div className="section-heading-row">
           <SectionHeading
             eyebrow="WAYS TO WORK TOGETHER"
@@ -310,6 +343,7 @@ export default function HomePage() {
             Compare packages
           </CtaLink>
         </div>
+        {/* List of service packages with enquiry links. */}
         <div className="home-service-list">
           {services.map((service, index) => (
             <Link
@@ -318,6 +352,7 @@ export default function HomePage() {
               key={service.id}
             >
               <span className="home-service-number">0{index + 1}</span>
+              {/* Package name, category, and ideal-customer summary. */}
               <div>
                 <h3>
                   {service.name}
@@ -325,18 +360,15 @@ export default function HomePage() {
                 </h3>
                 <p>{service.idealFor}</p>
               </div>
-              <strong>{service.offer}</strong>
+              <strong>{service.standard}</strong>
               <ArrowUpRight size={19} />
             </Link>
           ))}
         </div>
-        <p className="home-service-note">
-          Founding-client offers are introductory pricing, not a countdown
-          promotion. Scope and recurring costs are agreed before work begins.
-        </p>
       </section>
 
       <section className="closing-cta">
+        {/* Final project invitation with contact and services actions. */}
         <div className="closing-cta-inner">
           <span className="eyebrow eyebrow-light">
             <span className="eyebrow-dot" />
@@ -350,6 +382,7 @@ export default function HomePage() {
             a website, an integration, or a more tailored system makes the most
             sense.
           </p>
+          {/* Final calls to discuss a project or compare packages. */}
           <div className="hero-actions">
             <CtaLink href="/contact">Discuss your project</CtaLink>
             <Link className="closing-secondary" href="/services">

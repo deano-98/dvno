@@ -23,8 +23,8 @@
   box-sizing: border-box;
 }
 html {
-  scroll-behavior: auto;
-  scroll-padding-top: 100px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 body {
   margin: 0;
@@ -1361,12 +1361,12 @@ summary:focus-visible {
 }
 .price-label,
 .standard-price span {
-  font-size: 8px;
+  font-size: 10px;
   color: #787a78;
 }
 .price-row strong {
   font-family: var(--display);
-  font-size: 34px;
+  font-size: 24px;
   letter-spacing: -0.06em;
   font-weight: 650;
   line-height: 1.2;

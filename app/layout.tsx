@@ -49,13 +49,14 @@ export default function RootLayout({
         <Navbar />
         <main id="main-content">{children}</main>
         <footer className="site-footer">
+          {/* Footer brand, positioning statement, and contact prompt. */}
           <div className="footer-top">
             <a href="/" className="brand">
               <span className="brand-mark">
-                d<span>.</span>
+                d.
               </span>
               <span className="brand-name">
-                dean chap<span> / digital solutions</span>
+                devo<span> / digital solutions</span>
               </span>
             </a>
             <p>
@@ -67,8 +68,9 @@ export default function RootLayout({
               Have a project in mind? <span>Let&apos;s talk ↗</span>
             </a>
           </div>
+          {/* Copyright, short tagline, and selected-work link. */}
           <div className="footer-bottom">
-            <span>© {new Date().getFullYear()} Dean Chap</span>
+            <span>© {new Date().getFullYear()} Developed by devo</span>
             <span>Built with purpose, not noise.</span>
             <a href="/projects">Selected work ↗</a>
           </div>

@@ -3,7 +3,7 @@ export type Service = {
   name: string;
   eyebrow: string;
   standard: string;
-  offer: string;
+  // offer: string;
   description: string;
   idealFor: string;
   features: string[];
@@ -17,13 +17,13 @@ export const services: Service[] = [
     id: "starter",
     name: "Starter",
     eyebrow: "Digital storefront",
-    standard: "$275",
-    offer: "$250",
+    standard: "$300",
+    // offer: "$250",
     description:
       "A polished, professional online presence that makes it easy for customers to find and contact you.",
     idealFor: "Barbershops, salons and small businesses getting online.",
     features: [
-      "Up to 4 pages or equivalent landing-page sections",
+      "Up to 3 pages or equivalent landing-page sections",
       "Custom, mobile-friendly design",
       "WhatsApp, contact details and Google Maps",
       "Basic technical and on-page SEO",
@@ -32,15 +32,15 @@ export const services: Service[] = [
       "Core Web Vitals optimisation and SSL deployment",
       "Two revision rounds",
     ],
-    delivery: "5–8 working days",
+    delivery: "7–14 working days",
     cta: "Start My Website",
   },
   {
     id: "growth",
     name: "Growth",
     eyebrow: "Lead generation",
-    standard: "$525",
-    offer: "$475",
+    standard: "$550",
+    // offer: "$475",
     description:
       "A conversion-focused website built to turn visits into organised enquiries, bookings or order requests.",
     idealFor:
@@ -55,7 +55,7 @@ export const services: Service[] = [
       "Core Web Vitals testing and optimisation",
       "Deployment, form validation and two revision rounds",
     ],
-    delivery: "8–14 working days",
+    delivery: "2–3 weeks",
     cta: "Grow My Business",
     featured: true,
   },
@@ -63,8 +63,8 @@ export const services: Service[] = [
     id: "operations",
     name: "Operations",
     eyebrow: "Custom business systems",
-    standard: "From $950",
-    offer: "From $875",
+    standard: "$950",
+    // offer: "From $875",
     description:
       "A tailored website or application that connects customer-facing experiences with your internal workflow.",
     idealFor:
@@ -79,7 +79,7 @@ export const services: Service[] = [
       "SEO and analytics for public pages",
       "Testing, performance optimisation, deployment and documentation",
     ],
-    delivery: "Approximately 3–6 weeks",
+    delivery: "Approximately 4–6 weeks",
     cta: "Discuss a Custom System",
   },
 ];

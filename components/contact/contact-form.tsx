@@ -49,6 +49,7 @@ export function ContactForm() {
 
   return (
     <form className="contact-form" onSubmit={onSubmit}>
+      {/* Enquiry form heading and brief expectation-setting copy. */}
       <div className="form-heading">
         <span className="eyebrow">
           <span className="eyebrow-dot" />
@@ -61,7 +62,9 @@ export function ContactForm() {
         </h2>
         <p>No pressure or hard sell. Just a useful first conversation.</p>
       </div>
+      {/* Grouped fields for the visitor's contact and project details. */}
       <div className="form-grid">
+        {/* Name field. */}
         <div className="form-field">
           <label htmlFor="name">
             Your name <span>*</span>
@@ -76,6 +79,7 @@ export function ContactForm() {
             placeholder="e.g. Tadiwa Moyo"
           />
         </div>
+        {/* Optional business name field. */}
         <div className="form-field">
           <label htmlFor="business">
             Business name <span className="optional">Optional</span>
@@ -88,6 +92,7 @@ export function ContactForm() {
             placeholder="Your business"
           />
         </div>
+        {/* Preferred contact method field. */}
         <div className="form-field">
           <label htmlFor="contact">
             Email or preferred contact <span>*</span>
@@ -101,6 +106,7 @@ export function ContactForm() {
             placeholder="Email or phone number"
           />
         </div>
+        {/* Service selection field. */}
         <div className="form-field">
           <label htmlFor="service">
             What do you need? <span>*</span>
@@ -125,6 +131,7 @@ export function ContactForm() {
             ))}
           </select>
         </div>
+        {/* Project description field spanning the form grid. */}
         <div className="form-field form-field-full">
           <label htmlFor="message">
             What would you like to improve? <span>*</span>
@@ -139,12 +146,13 @@ export function ContactForm() {
             placeholder="A few lines about your business, the problem, or the idea..."
           />
         </div>
-        {/* Honeypot: humans never see this field; the API rejects filled values. */}
+        {/* Honeypot humans should leave empty; the API rejects filled values. */}
         <div className="honeypot" aria-hidden="true">
           <label htmlFor="website">Leave this field empty</label>
           <input id="website" name="website" tabIndex={-1} autoComplete="off" />
         </div>
       </div>
+      {/* Privacy note and submission action. */}
       <div className="form-bottom">
         <p>Your details are used only to respond to this enquiry.</p>
         <button

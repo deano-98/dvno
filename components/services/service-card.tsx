@@ -7,6 +7,7 @@ export function ServiceCard({ service }: { service: Service }) {
     <article
       className={`service-card ${service.featured ? "service-card-featured" : ""}`}
     >
+      {/* Service category and featured-plan indicator. */}
       <div className="service-card-top">
         <span className="eyebrow">
           <span className="eyebrow-dot" />
@@ -18,15 +19,18 @@ export function ServiceCard({ service }: { service: Service }) {
       </div>
       <h3>{service.name}</h3>
       <p className="service-description">{service.description}</p>
+      {/* Offer and standard pricing for the service. */}
       <div className="price-row">
+        {/* Introductory price. */}
         <div>
-          <span className="price-label">Founding-client offer</span>
-          <strong>{service.offer}</strong>
+          <span className="price-label">from</span>
+          <strong>{service.standard}</strong>
         </div>
-        <div className="standard-price">
+        {/* Standard price for comparison. */}
+        {/* <div className="standard-price">
           <span>Standard</span>
           <s>{service.standard}</s>
-        </div>
+        </div> */}
       </div>
       <p className="ideal-for">{service.idealFor}</p>
       <ul className="feature-list">
@@ -37,6 +41,7 @@ export function ServiceCard({ service }: { service: Service }) {
           </li>
         ))}
       </ul>
+      {/* Delivery estimate and link to enquire about the service. */}
       <div className="service-card-footer">
         <span>
           <span className="delivery-dot" />

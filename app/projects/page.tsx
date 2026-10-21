@@ -13,6 +13,7 @@ export default function ProjectsPage() {
   return (
     <>
       <section className="page-hero section-wrap">
+        {/* Introductory title and description for the projects index. */}
         <div className="page-hero-copy">
           <span className="eyebrow">
             <span className="eyebrow-dot" />
@@ -28,6 +29,7 @@ export default function ProjectsPage() {
             can improve the way a business serves customers and gets work done.
           </p>
         </div>
+        {/* Project count, context, and link to the project list. */}
         <div className="page-hero-side">
           <span>PROJECT INDEX</span>
           <strong>06</strong>

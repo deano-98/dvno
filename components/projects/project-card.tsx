@@ -13,7 +13,9 @@ export function ProjectCard({ project }: { project: Project }) {
       >
         <ProjectVisual project={project} />
       </Link>
+      {/* Project details, metadata, tags, and case-study link. */}
       <div className="project-card-content">
+        {/* Project number, category, and current status. */}
         <div className="project-meta">
           <span>
             {project.number} / {project.category}
@@ -27,6 +29,7 @@ export function ProjectCard({ project }: { project: Project }) {
           </Link>
         </h3>
         <p>{project.summary}</p>
+        {/* Technologies and capabilities represented by this project. */}
         <div className="tag-list">
           {project.tags.map((tag) => (
             <span className="tag" key={tag}>

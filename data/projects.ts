@@ -4,11 +4,13 @@ export type Project = {
   title: string;
   category: string;
   summary: string;
+  url?: string;
   status:
     | "In development"
-    | "Concept"
+    | "Private"
     | "Architecture work"
-    | "Implementation experience";
+    | "Implementation experience"
+    | "Live"
   tags: string[];
   stack: string[];
   accent: "navy" | "copper" | "blue" | "sage";
@@ -27,7 +29,8 @@ export const projects: Project[] = [
     category: "Restaurant ordering experience",
     summary:
       "A mobile-first restaurant website concept connecting menu discovery with a lightweight order workflow.",
-    status: "In development",
+    status: "Live",
+    url: "https://gauchos-web-app.vercel.app/",
     tags: ["Web App", "Database", "WhatsApp", "API"],
     stack: [
       "Next.js 16",
@@ -54,8 +57,72 @@ export const projects: Project[] = [
     note: "This project is in development. No live business results or production order volume are claimed.",
   },
   {
-    slug: "serverless-contact-form",
+    slug: "reeldon-timber",
     number: "02",
+    title: "Reeldon",
+    category: "Timber supplier website",
+    summary:
+      "A responsive product discovery and quotation experience for an established timber manufacturer and regional supplier.",
+    status: "Live",
+    url: "https://reeldon-demo.vercel.app/",
+    tags: ["Web App", "Product Catalogue", "Lead Generation", "Responsive Design"],
+    stack: [
+      "Next.js 16",
+      "TypeScript",
+      "Tailwind CSS",
+      "Lucide React",
+    ],
+    accent: "copper",
+    problem:
+      "Timber customers need to understand what a supplier offers, from structural timber to mouldings, doors, decking, and flooring. Without a clear online presentation, discovering relevant products and knowing how to request a quotation can require additional effort.",
+    solution:
+      "A responsive business website that presents Reeldon's products, company background, quality standards, and supply capabilities in a structured, customer-focused experience. Clear contact and quotation calls to action help prospective customers move from product discovery to a direct enquiry.",
+    howItWorks:
+      "Built with Next.js 16, TypeScript, and Tailwind CSS, the website uses reusable components and responsive layouts to organise product information, communicate the company's capabilities, and guide visitors towards quotation enquiries through direct contact channels.",
+    success: [
+      "Product and category engagement",
+      "Quotation enquiries generated",
+      "Enquiry conversion rate",
+      "Customer understanding of available products",
+    ],
+    note:
+      "The website is still in production. Quotation submission is not yet connected to a confirmed backend or CRM workflow, and no business performance results are claimed.",
+  },
+  {
+    slug: "ul-transport-services",
+    number: "03",
+    title: "UL Transport Services",
+    category: "School transport website",
+    summary:
+      "A service-focused website helping parents and schools understand transport offerings and enquire directly.",
+    status: "Live",
+    url: "https://uncle-lenny-demo.vercel.app/",
+    tags: ["Web App", "Lead Generation", "WhatsApp", "Analytics"],
+    stack: [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "Lucide React",
+    ],
+    accent: "copper",
+    problem:
+      "Parents and schools need clear information about school transport services, vehicle fleets, and safety practices before making an enquiry. When this information is difficult to find, potential customers may hesitate or need to contact the business simply to understand its offering.",
+    solution:
+      "A responsive website organised around services, school partnerships, fleet information, safety, and frequently asked questions. Strategically placed WhatsApp calls to action give visitors a direct way to discuss transport requirements with the business.",
+    howItWorks:
+      "Built with Next.js, React, and Tailwind CSS, the website structures service information into dedicated sections and provides WhatsApp enquiry links at key decision points. WhatsApp click events are tracked through the project's analytics utilities, supporting measurement of visitor engagement with enquiry calls to action.",
+    success: [
+      "WhatsApp enquiries generated",
+      "Clicks on individual enquiry points",
+      "Visitor engagement with service information",
+      "Enquiry conversion rate",
+    ],
+    note:
+      "The website includes WhatsApp enquiry pathways and click-event tracking. No verified enquiry volumes, conversion improvements, or business results are claimed.",
+  },
+  {
+    slug: "serverless-contact-form",
+    number: "04",
     title: "Serverless contact pipeline",
     category: "Cloud infrastructure",
     summary:
@@ -86,7 +153,7 @@ export const projects: Project[] = [
   },
   {
     slug: "shopify-operations-automation",
-    number: "03",
+    number: "05",
     title: "Commerce operations automation",
     category: "Business process automation",
     summary:
@@ -111,7 +178,7 @@ export const projects: Project[] = [
   },
   {
     slug: "cloud-architecture",
-    number: "04",
+    number: "06",
     title: "Cloud architecture & cost planning",
     category: "Cloud engineering",
     summary:
@@ -143,12 +210,12 @@ export const projects: Project[] = [
   },
   {
     slug: "small-business-supplier",
-    number: "05",
+    number: "07",
     title: "Small-business supplier storefront",
     category: "Digital storefront concept",
     summary:
       "A product-led catalogue and enquiry flow for suppliers who want customers to browse items and request an order without a payment gateway.",
-    status: "Concept",
+    status: "Private",
     tags: ["Web App", "CMS", "WhatsApp", "SEO"],
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Sanity", "WhatsApp"],
     accent: "copper",
@@ -165,31 +232,6 @@ export const projects: Project[] = [
       "Time spent updating product information",
     ],
     note: "Concept project. The CMS, catalogue and integrations must be configured before it can be described as a live service.",
-  },
-  {
-    slug: "developer-portfolio",
-    number: "06",
-    title: "Personal portfolio platform",
-    category: "Portfolio & content platform",
-    summary:
-      "A modular portfolio built to explain technical work in terms of architecture, business problems, and measurable next steps.",
-    status: "In development",
-    tags: ["Web App", "SEO", "Analytics", "Performance"],
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel Analytics"],
-    accent: "blue",
-    problem:
-      "A list of technologies alone does not help a prospective client understand what a developer can improve for their business.",
-    solution:
-      "A case-study-led portfolio with transparent service pricing, project details, conversion-focused calls to action, and clear separation between intended outcomes and verified results.",
-    howItWorks:
-      "Reusable page sections and typed project data keep content maintainable. Server Components handle most presentation, while small Client Components provide navigation, filters, and enquiry interactions. Metadata and analytics support discoverability and measurement once production settings are configured.",
-    success: [
-      "Qualified project enquiries",
-      "Contact CTA conversion",
-      "Case-study engagement",
-      "Core Web Vitals field data",
-    ],
-    note: "This portfolio source is the implementation of that approach; production domain and analytics credentials remain configurable.",
   },
 ];
 

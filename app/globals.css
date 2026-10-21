@@ -1701,6 +1701,30 @@ summary:focus-visible {
   font-size: 8px;
   letter-spacing: 0.04em;
 }
+.case-live-link {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.case-live-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(17, 22, 31, 0.78);
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.case-live-link:hover .case-live-overlay,
+.case-live-link:focus-visible .case-live-overlay {
+  opacity: 1;
+}
 .project-visual-large {
   min-height: 390px;
   border-radius: 20px;

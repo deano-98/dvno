@@ -58,7 +58,22 @@ export default async function ProjectDetailPage({
           </div>
           <span className="case-status">{project.status}</span>
         </div>
-        <ProjectVisual project={project} large />
+        {project.url ? (
+          <a
+            className="case-live-link"
+            href={project.url}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`View ${project.title} live site (opens in a new tab)`}
+          >
+            <ProjectVisual project={project} large />
+            <span className="case-live-overlay" aria-hidden="true">
+              Click to view live site <ArrowUpRight size={18} />
+            </span>
+          </a>
+        ) : (
+          <ProjectVisual project={project} large />
+        )}
       </section>
       <section className="case-content section-wrap">
         {/* Main case-study sections alongside the project snapshot sidebar. */}

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, CheckCircle2, Github } from "lucide-react";
 import { projects } from "@/data/projects";
 import { ProjectVisual } from "@/components/projects/project-visual";
 import { CtaLink } from "@/components/ui/cta-link";
@@ -57,6 +57,32 @@ export default async function ProjectDetailPage({
             ))}
           </div>
           <span className="case-status">{project.status}</span>
+
+          {/* View GitHub button */}
+          <div className="contact-direct-links">
+            {project.github ? (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noreferrer"
+                className="contact-direct-secondary"
+              >
+                <Github size={18} />
+                <span>
+                  <strong>View GitHub</strong>
+                  <small>Code and development work</small>
+                </span>
+              </a>
+            ) : (
+              <div className="contact-direct-secondary">
+                <Github size={18} />
+                <span>
+                  <strong>Code unavailable</strong>
+                  <small>Not shared for privacy and security reasons</small>
+                </span>
+              </div>
+            )}
+          </div>
         </div>
         {project.url ? (
           <a

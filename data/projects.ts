@@ -20,6 +20,7 @@ export type Project = {
   success: string[];
   note?: string;
   outline: string;
+  github?: string; // Optional GitHub repository URL for the project
 };
 
 export const projects: Project[] = [
@@ -28,11 +29,12 @@ export const projects: Project[] = [
     number: "01",
     title: "Gaucho",
     category: "Restaurant ordering experience",
+    github: "https://github.com/deano-98/Gaucho-web-app",
     summary:
       "A mobile-first restaurant website concept connecting menu discovery with a lightweight order workflow.",
     status: "Live",
     url: "https://gauchos-web-app.vercel.app/",
-    tags: ["Web App", "Database", "WhatsApp", "API"],
+    tags: ["Web App", "Database", "WhatsApp", "API", "Responsive Design", "Lead Generation", "SEO"],
     stack: [
       "Next.js 16",
       "TypeScript",
@@ -63,6 +65,7 @@ export const projects: Project[] = [
     number: "02",
     title: "Reeldon",
     category: "Timber supplier website",
+    github: "https://github.com/deano-98/Reeldon_web_app",
     summary:
       "A responsive product discovery and quotation experience for an established timber manufacturer and regional supplier.",
     status: "Live",
@@ -96,11 +99,12 @@ export const projects: Project[] = [
     number: "03",
     title: "UL Transport Services",
     category: "School transport website",
+    github: "https://github.com/deano-98/Uncle-Lenny-web-app",
     summary:
       "A service-focused website helping parents and schools understand transport offerings and enquire directly.",
     status: "Live",
     url: "https://uncle-lenny-demo.vercel.app/",
-    tags: ["Web App", "Lead Generation", "WhatsApp", "Analytics"],
+    tags: ["Web App", "Lead Generation", "WhatsApp", "Analytics", "SEO"],
     stack: [
       "Next.js",
       "React",
@@ -129,6 +133,7 @@ export const projects: Project[] = [
     number: "04",
     title: "Serverless contact pipeline",
     category: "Cloud infrastructure",
+    // github: "https://github.com/deano-98/Uncle-Lenny-web-app",
     summary:
       "A low-maintenance contact-form architecture designed to accept enquiries and deliver email notifications securely.",
     status: "Architecture work",
@@ -161,6 +166,7 @@ export const projects: Project[] = [
     number: "05",
     title: "Commerce operations automation",
     category: "Business process automation",
+    // github: "https://github.com/deano-98/Uncle-Lenny-web-app",
     summary:
       "Python and spreadsheet-based tooling to reduce repetitive Shopify catalogue and operations work.",
     status: "Implementation experience",
@@ -183,63 +189,39 @@ export const projects: Project[] = [
     outline: "Python and spreadsheet-based tooling to reduce repetitive Shopify catalogue and operations work.",
   },
   {
-    slug: "cloud-architecture",
+    slug: "ronix",
     number: "06",
-    title: "Cloud architecture & cost planning",
-    category: "Cloud engineering",
+    title: "Ronix",
+    category: "Tools supplier ",
+    github: "https://github.com/deano-98/Tool-Supplier-web-app",
     summary:
-      "Cloud-native architecture work covering service boundaries, deployment automation, and cost-conscious infrastructure choices.",
-    status: "Architecture work",
-    tags: ["Cloud", "Automation", "Security", "Architecture"],
+      "A responsive product catalogue and quotation workflow for a tools supplier, designed to help customers browse products and request quotes without a payment gateway. Also included is a headless CMS for staff to maintain product information and a planned database record for submitted enquiries.",
+    status: "In development",
+    tags: ["Web App", "E-commerce", "Content Management", "CMS", "WhatsApp", "SEO"],
     stack: [
-      "AWS",
-      "Terraform",
-      "CloudFormation",
-      "CI/CD",
-      "DDD",
-      "Event-driven design",
+       "Next.js 16",
+      "TypeScript",
+      "Tailwind CSS",
+      "Lucide React",
+      "Sanity CMS",
     ],
-    accent: "navy",
-    problem:
-      "Cloud systems can become expensive or difficult to change when deployment patterns, service boundaries, and cost assumptions are not made explicit.",
-    solution:
-      "Architecture work spanning microservices, infrastructure as code, QA pipelines, integration and security protocols, and cost-benefit planning for options such as Savings Plans and Reserved Instances.",
-    howItWorks:
-      "Infrastructure definitions make environments more repeatable. CI/CD checks support safer changes, while domain-driven boundaries and event-driven patterns help teams reason about ownership and integration. Cost recommendations should be based on workload history, commitments, and documented trade-offs.",
-    success: [
-      "Deployment lead time and change-failure rate",
-      "Infrastructure cost by workload",
-      "Service reliability and incident frequency",
-      "Adoption of documented architecture decisions",
-    ],
-    note: "A summary of architecture responsibilities; no confidential client architecture or unverified savings are disclosed.",
-    outline: "Cloud-native architecture work covering service boundaries, deployment automation, and cost-conscious infrastructure choices.",
-  },
-  {
-    slug: "small-business-supplier",
-    number: "07",
-    title: "Small-business supplier storefront",
-    category: "Digital storefront concept",
-    summary:
-      "A product-led catalogue and enquiry flow for suppliers who want customers to browse items and request an order without a payment gateway.",
-    status: "Private",
-    tags: ["Web App", "CMS", "WhatsApp", "SEO"],
-    outline: "A simple, mobile-friendly storefront for small businesses to showcase their products and receive enquiries via WhatsApp.",
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Sanity", "WhatsApp"],
     accent: "copper",
     problem:
-      "Small suppliers often need a simple online catalogue but may not be ready for the cost and operational overhead of full e-commerce checkout.",
+      "Customers need an easy way to browse a tools supplier's products and request a quote. Staff also need a way to keep product information up to date, without requiring a full online checkout and payment system.",
     solution:
-      "A mobile-first catalogue with clear product information, category browsing, and a basket-like enquiry flow that sends a structured request to the business.",
+      "A responsive product catalogue and quotation workflow where customers can browse tools and submit quote requests without a payment gateway. A headless CMS lets staff maintain product information, with a database record for enquiries planned as part of the workflow.",
     howItWorks:
-      "A headless CMS can let staff maintain catalogue content. The front end presents searchable product information and composes a WhatsApp enquiry with selected items. A future phase could add stock status, quote records, or a protected administration workflow if validated by the business.",
+      "The Next.js frontend presents product information managed by staff in Sanity CMS. Customers can browse the catalogue and start a quotation enquiry, with WhatsApp supporting contact and a database record for submitted enquiries planned. The workflow is focused on product discovery and quotes rather than online payment.",
     success: [
-      "Product-to-enquiry rate",
-      "Qualified quotation requests",
-      "Mobile catalogue engagement",
-      "Time spent updating product information",
+      "Product catalogue engagement",
+      "Quotation requests submitted",
+      "Product-to-enquiry conversion rate",
+      "Time staff spend maintaining product information",
     ],
-    note: "Concept project. The CMS, catalogue and integrations must be configured before it can be described as a live service.",
+    note:
+      "The project is currently in development. The enquiry database record is planned, and no payment gateway or verified business results are claimed.",
+    outline:
+      "A responsive tools catalogue with a quote-request workflow, a Sanity CMS for staff-managed product information, and a planned database record for submitted enquiries. Customers can request quotes without completing an online payment.",
   },
 ];
 

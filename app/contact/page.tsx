@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { ArrowUpRight, Github, MessageCircle } from "lucide-react";
+import {
+  ArrowUpRight,
+  Github,
+  Linkedin,
+  Mail,
+  MessageCircle,
+} from "lucide-react";
 import { ContactForm } from "@/components/contact/contact-form";
 import { siteConfig, whatsappUrl } from "@/lib/site";
 
@@ -41,7 +47,7 @@ export default function ContactPage() {
             website, a smoother way to manage enquiries, or a custom tool to
             take friction out of daily work.
           </p>
-          {/* Direct links for WhatsApp and GitHub. */}
+          {/* Direct contact channels and professional profiles. */}
           <div className="contact-direct-links">
             <a
               href={whatsappUrl("Hi Dean, I would like to discuss a project.")}
@@ -66,6 +72,30 @@ export default function ContactPage() {
               <span>
                 <strong>View GitHub</strong>
                 <small>Code and development work</small>
+              </span>
+              <ArrowUpRight size={17} />
+            </a>
+            <a
+              href={`mailto:${siteConfig.email}`}
+              className="contact-direct-secondary"
+            >
+              <Mail size={18} />
+              <span>
+                <strong>Email me</strong>
+                <small>{siteConfig.email}</small>
+              </span>
+              <ArrowUpRight size={17} />
+            </a>
+            <a
+              href={siteConfig.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="contact-direct-secondary"
+            >
+              <Linkedin size={18} />
+              <span>
+                <strong>Connect on LinkedIn</strong>
+                <small>Professional profile</small>
               </span>
               <ArrowUpRight size={17} />
             </a>

@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Linkedin, Mail } from "lucide-react";
 import { Navbar } from "@/components/navigation/navbar";
 import { LenisProvider } from "@/components/lenis-provider";
 import { AnalyticsTools } from "@/components/analytics";
@@ -56,7 +57,7 @@ export default function RootLayout({
                 d.
               </span>
               <span className="brand-name">
-                devo<span> / digital solutions</span>
+                deano<span> / digital solutions</span>
               </span>
             </a>
             <p>
@@ -72,6 +73,24 @@ export default function RootLayout({
           <div className="footer-bottom">
             <span>© {new Date().getFullYear()} Developed by devo</span>
             <span>Built with purpose, not noise.</span>
+            <div className="footer-social-links">
+              <a
+                href={`mailto:${siteConfig.email}`}
+                aria-label={`Email ${siteConfig.email}`}
+                title={`Email ${siteConfig.email}`}
+              >
+                <Mail size={18} aria-hidden="true" />
+              </a>
+              <a
+                href={siteConfig.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn profile (opens in a new tab)"
+                title="LinkedIn"
+              >
+                <Linkedin size={18} aria-hidden="true" />
+              </a>
+            </div>
             <a href="/projects">Selected work ↗</a>
           </div>
         </footer>

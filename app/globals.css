@@ -283,7 +283,7 @@ summary:focus-visible {
 .footer-bottom,
 .closing-cta-stamp {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.1em;
 }
 .hero-kicker {
@@ -1219,6 +1219,30 @@ summary:focus-visible {
   color: #646970;
 }
 .footer-bottom a:hover {
+  color: var(--copper);
+}
+.footer-social-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.footer-social-links a {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid #d9d8d1;
+  border-radius: 50%;
+  color: var(--navy);
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    background 0.2s;
+}
+.footer-social-links a:hover {
+  border-color: var(--copper);
+  background: rgba(184, 121, 82, 0.08);
   color: var(--copper);
 }
 /* Interior page shared */

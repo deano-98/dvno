@@ -194,6 +194,36 @@ summary:focus-visible {
 .mobile-overlay {
   display: none;
 }
+.menu-toggle-icon {
+  position: relative;
+  display: block;
+  width: 18px;
+  height: 12px;
+}
+.menu-toggle-icon span {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 18px;
+  height: 1.75px;
+  margin-top: -0.875px;
+  border-radius: 99px;
+  background: currentColor;
+  /* Bars stay on the same transform so the burger-to-X morph is a single interpolation. */
+  transition: transform 0.45s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.menu-toggle-icon span:first-child {
+  transform: translateY(-4px);
+}
+.menu-toggle-icon span:last-child {
+  transform: translateY(4px);
+}
+.mobile-menu-toggle.is-open .menu-toggle-icon span:first-child {
+  transform: rotate(45deg);
+}
+.mobile-menu-toggle.is-open .menu-toggle-icon span:last-child {
+  transform: rotate(-45deg);
+}
 .hero {
   position: relative;
   min-height: 700px;
@@ -2261,60 +2291,96 @@ summary:focus-visible {
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.5);
     color: var(--navy);
+    padding: 0;
+    transition:
+      color 0.35s ease,
+      background 0.35s ease,
+      border-color 0.35s ease;
+  }
+  .site-header.is-menu-open {
+    z-index: 160;
+  }
+  .site-header.is-menu-open .nav-shell {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .site-header.is-menu-open .brand-mark {
+    background: #f5f3ed;
+    color: var(--navy);
+  }
+  .site-header.is-menu-open .brand-name {
+    color: white;
+  }
+  .site-header.is-menu-open .mobile-menu-toggle {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.22);
+    color: white;
   }
   .mobile-overlay {
+    --menu-x: calc(100% - 32px);
+    --menu-y: 38px;
     display: flex;
     position: fixed;
     inset: 0;
     z-index: 150;
     background: var(--navy);
     color: white;
-    padding: 18px 23px 24px;
+    padding: 88px 23px 24px;
     flex-direction: column;
-    opacity: 0;
+    /* Closed state is a 0-radius circle sitting on the hamburger. */
+    clip-path: circle(0px at var(--menu-x) var(--menu-y));
     visibility: hidden;
-    transform: translateY(-8px);
-    transition:
-      opacity 0.25s,
-      transform 0.25s,
-      visibility 0.25s;
     pointer-events: none;
+    transition:
+      clip-path 0.6s cubic-bezier(0.76, 0, 0.24, 1),
+      visibility 0.6s;
   }
   .mobile-overlay.is-open {
-    opacity: 1;
+    /* Radius is oversized so the circle covers the longest viewport corner. */
+    clip-path: circle(150vmax at var(--menu-x) var(--menu-y));
     visibility: visible;
-    transform: translateY(0);
     pointer-events: auto;
-  }
-  .mobile-overlay .brand-mark {
-    background: #f5f3ed;
-    color: var(--navy);
-  }
-  .mobile-overlay .brand-mark span {
-    color: var(--copper);
-  }
-  .mobile-overlay .brand-name {
-    color: white;
-  }
-  .mobile-overlay-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .mobile-close {
-    display: grid;
-    place-items: center;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    color: white;
-    background: transparent;
+    transition:
+      clip-path 0.6s cubic-bezier(0.76, 0, 0.24, 1),
+      visibility 0s;
   }
   .mobile-overlay-links {
     display: flex;
     flex-direction: column;
-    margin-top: 13vh;
+    margin-top: 6vh;
+  }
+  .mobile-overlay-links > a,
+  .mobile-whatsapp,
+  .mobile-note {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
+  }
+  .mobile-overlay.is-open .mobile-overlay-links > a,
+  .mobile-overlay.is-open .mobile-whatsapp,
+  .mobile-overlay.is-open .mobile-note {
+    opacity: 1;
+    transform: none;
+  }
+  .mobile-overlay.is-open .mobile-overlay-links > a:nth-child(1) {
+    transition-delay: 0.18s;
+  }
+  .mobile-overlay.is-open .mobile-overlay-links > a:nth-child(2) {
+    transition-delay: 0.24s;
+  }
+  .mobile-overlay.is-open .mobile-overlay-links > a:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+  .mobile-overlay.is-open .mobile-whatsapp {
+    transition-delay: 0.36s;
+  }
+  .mobile-overlay.is-open .mobile-note {
+    transition-delay: 0.42s;
   }
   .mobile-overlay-links > a {
     display: grid;

@@ -34,7 +34,7 @@ export const projects: Project[] = [
       "A mobile-first restaurant website concept connecting menu discovery with a lightweight order workflow.",
     status: "Live",
     url: "https://gauchos-web-app.vercel.app/",
-    tags: ["Web App", "Database", "WhatsApp", "API", "Responsive Design", "Lead Generation", "SEO"],
+    tags: ["Web App", "Database", "WhatsApp", "API", "Responsive Design", "Lead Generation", "SEO", "E-commerce"],
     stack: [
       "Next.js 16",
       "TypeScript",
@@ -195,7 +195,7 @@ export const projects: Project[] = [
     category: "Tools supplier ",
     github: "https://github.com/deano-98/Tool-Supplier-web-app",
     summary:
-      "A responsive product catalogue and quotation workflow for a tools supplier, designed to help customers browse products and request quotes without a payment gateway. Also included is a headless CMS for staff to maintain product information and a planned database record for submitted enquiries.",
+      "A responsive product catalogue for a tools supplier, featuring a headless CMS for product management and a quotation workflow that captures customer enquiries without requiring online payments.",
     status: "In development",
     tags: ["Web App", "E-commerce", "Content Management", "CMS", "WhatsApp", "SEO"],
     stack: [

@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { siteConfig, whatsappUrl } from "@/lib/site";
 
@@ -14,15 +14,35 @@ const links = [
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
-  // Lock the page behind the mobile overlay and restore the prior state on close/unmount.
+  // Pin the overlay's clip-path origin to the hamburger so it warps out of (and back into) the button.
+  const syncMenuOrigin = useCallback(() => {
+    const button = toggleRef.current;
+    const overlay = overlayRef.current;
+    if (!button || !overlay) return;
+
+    const { left, top, width, height } = button.getBoundingClientRect();
+    overlay.style.setProperty("--menu-x", `${left + width / 2}px`);
+    overlay.style.setProperty("--menu-y", `${top + height / 2}px`);
+  }, []);
+
+  const toggleMenu = () => {
+    syncMenuOrigin();
+    setOpen((value) => !value);
+  };
+
+  // Lock scroll and allow Escape to close while the overlay is open.
   useEffect(() => {
     if (!open) return;
+
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setOpen(false);
     };
+
     window.addEventListener("keydown", onKeyDown);
     return () => {
       document.body.style.overflow = previousOverflow;
@@ -30,22 +50,36 @@ export function Navbar() {
     };
   }, [open]);
 
+  // Keep the warp origin aligned if the viewport changes while the menu is open.
+  useEffect(() => {
+    syncMenuOrigin();
+    window.addEventListener("resize", syncMenuOrigin);
+    return () => window.removeEventListener("resize", syncMenuOrigin);
+  }, [open, syncMenuOrigin]);
+
+  // Close on route change, and if the layout jumps back to desktop.
   useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 761px)");
+    const onChange = () => {
+      if (media.matches) setOpen(false);
+    };
+    media.addEventListener("change", onChange);
+    return () => media.removeEventListener("change", onChange);
+  }, []);
 
   return (
     <>
-      <header className="site-header">
+      <header className={`site-header${open ? " is-menu-open" : ""}`}>
         <nav className="nav-shell" aria-label="Main navigation">
           <Link
             href="/"
             className="brand"
             aria-label={`${siteConfig.name}, home`}
           >
-            <span className="brand-mark">
-              d.
-            </span>
+            <span className="brand-mark">d.</span>
             <span className="brand-name">
-              devo<span> / digital solutions</span>
+              devno<span> / digital solutions</span>
             </span>
           </Link>
           {/* Desktop navigation links and primary contact action. */}
@@ -64,39 +98,30 @@ export function Navbar() {
             </Link>
           </div>
           <button
-            className="mobile-menu-toggle"
+            ref={toggleRef}
+            type="button"
+            className={`mobile-menu-toggle${open ? " is-open" : ""}`}
             aria-label={open ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={open}
             aria-controls="mobile-navigation"
-            onClick={() => setOpen((value) => !value)}
+            onClick={toggleMenu}
           >
-            {open ? <X size={21} /> : <Menu size={21} />}
+            {/* Two bars share a center point: they slide apart as a burger, then rotate into an X. */}
+            <span className="menu-toggle-icon" aria-hidden="true">
+              <span />
+              <span />
+            </span>
           </button>
         </nav>
       </header>
-      {/* Full-screen mobile navigation overlay, shown when the menu is open. */}
+      {/* Full-screen mobile overlay. clip-path is animated from the hamburger origin. */}
       <div
+        ref={overlayRef}
         id="mobile-navigation"
-        className={`mobile-overlay ${open ? "is-open" : ""}`}
+        className={`mobile-overlay${open ? " is-open" : ""}`}
         aria-hidden={!open}
+        inert={!open}
       >
-        {/* Mobile overlay header with the brand and close control. */}
-        <div className="mobile-overlay-top">
-          <Link href="/" className="brand" onClick={() => setOpen(false)}>
-            <span className="brand-mark">
-              d.
-            </span>
-            <span className="brand-name">devo</span>
-          </Link>
-          <button
-            className="mobile-close"
-            aria-label="Close navigation menu"
-            onClick={() => setOpen(false)}
-          >
-            <X size={22} />
-          </button>
-        </div>
-        {/* Mobile navigation destinations. */}
         <div className="mobile-overlay-links">
           <Link href="/" onClick={() => setOpen(false)}>
             <span>00</span> Home <ArrowUpRight />

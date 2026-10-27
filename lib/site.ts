@@ -5,7 +5,7 @@ export const siteConfig = {
   description:
     "I build modern websites and practical software systems that help businesses attract customers, streamline workflows, and turn digital opportunities into measurable results.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
-  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "",
+  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "0779230211",
   email: "deanchaps@gmail.com",
   github: "https://github.com/deano-98",
   linkedin: "https://www.linkedin.com/in/dean-chap-721537187/",

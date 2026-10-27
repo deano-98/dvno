@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Linkedin, Mail } from "lucide-react";
+import Link from "next/link";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { Navbar } from "@/components/navigation/navbar";
 import { LenisProvider } from "@/components/lenis-provider";
 import { AnalyticsTools } from "@/components/analytics";
@@ -52,22 +53,22 @@ export default function RootLayout({
         <footer className="site-footer">
           {/* Footer brand, positioning statement, and contact prompt. */}
           <div className="footer-top">
-            <a href="/" className="brand">
+            <Link href="/" className="brand">
               <span className="brand-mark">
                 d.
               </span>
               <span className="brand-name">
                 deano<span> / digital solutions</span>
               </span>
-            </a>
+            </Link>
             <p>
               Thoughtful technology.
               <br />
               Practical business outcomes.
             </p>
-            <a className="footer-top-link" href="/contact">
+            <Link className="footer-top-link" href="/contact">
               Have a project in mind? <span>Let&apos;s talk ↗</span>
-            </a>
+            </Link>
           </div>
           {/* Copyright, short tagline, and selected-work link. */}
           <div className="footer-bottom">
@@ -90,8 +91,17 @@ export default function RootLayout({
               >
                 <Linkedin size={18} aria-hidden="true" />
               </a>
+              <a
+                href={siteConfig.github}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub profile (opens in a new tab)"
+                title="GitHub"
+              >
+                <Github size={18} aria-hidden="true" />
+              </a>
             </div>
-            <a href="/projects">Selected work ↗</a>
+            <Link href="/projects">Selected work ↗</Link>
           </div>
         </footer>
         <AnalyticsTools />

@@ -22,12 +22,12 @@ A mobile-first Next.js portfolio and digital-solutions business website. The des
 ## Local setup
 
 ```bash
-cp .env.example .env.local
 npm install
 npm run dev
 ```
 
 Open http://localhost:3000.
+Create `.env.local` only if you need to override one of the optional settings below; it is not required to run the site locally.
 
 ## Environment variables
 
@@ -46,7 +46,13 @@ The form posts to `/api/contact`, where Zod validates the payload and a honeypot
 
 ## Analytics and privacy
 
-Vercel Analytics and Speed Insights are included. GA4 is loaded only when `NEXT_PUBLIC_GA_ID` is set. Confirm the privacy/consent requirements that apply to your audience before enabling analytics. This starter does not include a consent-management platform.
+Vercel Analytics and Speed Insights are mounted globally in the root layout. They do not need project IDs or environment variables. To collect data on a Vercel deployment:
+
+1. Open the project in Vercel and enable **Analytics** and **Speed Insights** from their respective project dashboard tabs.
+2. Deploy or redeploy the site. Visit the production site to generate real page views and performance measurements.
+3. Return to each dashboard to review data after Vercel has received and processed visits. Local development traffic is not a substitute for production measurements.
+
+GA4 is loaded only when `NEXT_PUBLIC_GA_ID` is set. Confirm the privacy/consent requirements that apply to your audience before enabling analytics. This starter does not include a consent-management platform.
 
 ## Content to verify before launch
 
@@ -71,9 +77,10 @@ These commands should be run after dependency installation and before deployment
 
 1. Push the project to a GitHub repository.
 2. Import the repository into Vercel.
-3. Set the production environment variables listed above.
-4. Deploy and verify `/`, `/services`, `/projects`, each project detail, `/contact`, `/sitemap.xml`, and `/robots.txt`.
-5. Submit the sitemap in Google Search Console and confirm GA4/Vercel data after real visits arrive.
+3. Set the production environment variables listed above. Vercel Analytics and Speed Insights do not require environment variables.
+4. Enable Analytics and Speed Insights in the project dashboard.
+5. Deploy and verify `/`, `/services`, `/projects`, each project detail, `/contact`, `/sitemap.xml`, and `/robots.txt`.
+6. Submit the sitemap in Google Search Console and confirm GA4/Vercel data after real visits arrive.
 
 ## Project structure
 

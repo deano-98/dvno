@@ -60,10 +60,10 @@ export function ProjectVisual({
           {project.stack[0]} <ArrowUpRight size={12} />
         </div>
         {/* Closing caption along the bottom edge of the artwork. */}
-        <div className="visual-bottomline">
+        {/* <div className="visual-bottomline">
           <span>DESIGNED AROUND THE WORK</span>
           <ArrowDownRight size={15} />
-        </div>
+        </div> */}
       </div>
     </>
   );

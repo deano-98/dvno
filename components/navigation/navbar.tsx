@@ -79,7 +79,7 @@ export function Navbar() {
           >
             <span className="brand-mark">d.</span>
             <span className="brand-name">
-              devno<span> / digital solutions</span>
+              deano<span> / digital solutions</span>
             </span>
           </Link>
           {/* Desktop navigation links and primary contact action. */}

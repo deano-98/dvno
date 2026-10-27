@@ -95,8 +95,43 @@ export const projects: Project[] = [
     outline: "Responsive business website presenting Reeldon's products, company background, quality standards, and supply capabilities in a structured, customer-focused experience. Clear contact and quotation calls to action help prospective customers move from product discovery to a direct enquiry.",
   },
   {
-    slug: "ul-transport-services",
+    slug: "ronix",
     number: "03",
+    title: "Ronix",
+    category: "Tools supplier ",
+    github: "https://github.com/deano-98/Tool-Supplier-web-app",
+    summary:
+      "A responsive product catalogue for a tools supplier, featuring a headless CMS for product management and a quotation workflow that captures customer enquiries without requiring online payments.",
+    status: "In development",
+    tags: ["Web App", "E-commerce", "Content Management", "CMS", "WhatsApp","Responsive Design", "SEO"],
+    stack: [
+       "Next.js 16",
+      "TypeScript",
+      "Tailwind CSS",
+      "Lucide React",
+      "Sanity CMS",
+    ],
+    accent: "copper",
+    problem:
+      "Customers need an easy way to browse a tools supplier's products and request a quote. Staff also need a way to keep product information up to date, without requiring a full online checkout and payment system.",
+    solution:
+      "A responsive product catalogue and quotation workflow where customers can browse tools and submit quote requests without a payment gateway. A headless CMS lets staff maintain product information, with a database record for enquiries planned as part of the workflow.",
+    howItWorks:
+      "The Next.js frontend presents product information managed by staff in Sanity CMS. Customers can browse the catalogue and start a quotation enquiry, with WhatsApp supporting contact and a database record for submitted enquiries planned. The workflow is focused on product discovery and quotes rather than online payment.",
+    success: [
+      "Product catalogue engagement",
+      "Quotation requests submitted",
+      "Product-to-enquiry conversion rate",
+      "Time staff spend maintaining product information",
+    ],
+    note:
+      "The project is currently in development. The enquiry database record is planned, and no payment gateway or verified business results are claimed.",
+    outline:
+      "A responsive tools catalogue with a quote-request workflow, a Sanity CMS for staff-managed product information, and a planned database record for submitted enquiries. Customers can request quotes without completing an online payment.",
+  },
+  {
+    slug: "ul-transport-services",
+    number: "04",
     title: "UL Transport Services",
     category: "School transport website",
     github: "https://github.com/deano-98/Uncle-Lenny-web-app",
@@ -130,7 +165,7 @@ export const projects: Project[] = [
   },
   {
     slug: "serverless-contact-form",
-    number: "04",
+    number: "05",
     title: "Serverless contact pipeline",
     category: "Cloud infrastructure",
     // github: "https://github.com/deano-98/Uncle-Lenny-web-app",
@@ -163,7 +198,7 @@ export const projects: Project[] = [
   },
   {
     slug: "shopify-operations-automation",
-    number: "05",
+    number: "06",
     title: "Commerce operations automation",
     category: "Business process automation",
     // github: "https://github.com/deano-98/Uncle-Lenny-web-app",
@@ -188,41 +223,7 @@ export const projects: Project[] = [
     note: "Describes relevant contract development experience; specific savings and throughput figures are not available.",
     outline: "Python and spreadsheet-based tooling to reduce repetitive Shopify catalogue and operations work.",
   },
-  {
-    slug: "ronix",
-    number: "06",
-    title: "Ronix",
-    category: "Tools supplier ",
-    github: "https://github.com/deano-98/Tool-Supplier-web-app",
-    summary:
-      "A responsive product catalogue for a tools supplier, featuring a headless CMS for product management and a quotation workflow that captures customer enquiries without requiring online payments.",
-    status: "In development",
-    tags: ["Web App", "E-commerce", "Content Management", "CMS", "WhatsApp", "SEO"],
-    stack: [
-       "Next.js 16",
-      "TypeScript",
-      "Tailwind CSS",
-      "Lucide React",
-      "Sanity CMS",
-    ],
-    accent: "copper",
-    problem:
-      "Customers need an easy way to browse a tools supplier's products and request a quote. Staff also need a way to keep product information up to date, without requiring a full online checkout and payment system.",
-    solution:
-      "A responsive product catalogue and quotation workflow where customers can browse tools and submit quote requests without a payment gateway. A headless CMS lets staff maintain product information, with a database record for enquiries planned as part of the workflow.",
-    howItWorks:
-      "The Next.js frontend presents product information managed by staff in Sanity CMS. Customers can browse the catalogue and start a quotation enquiry, with WhatsApp supporting contact and a database record for submitted enquiries planned. The workflow is focused on product discovery and quotes rather than online payment.",
-    success: [
-      "Product catalogue engagement",
-      "Quotation requests submitted",
-      "Product-to-enquiry conversion rate",
-      "Time staff spend maintaining product information",
-    ],
-    note:
-      "The project is currently in development. The enquiry database record is planned, and no payment gateway or verified business results are claimed.",
-    outline:
-      "A responsive tools catalogue with a quote-request workflow, a Sanity CMS for staff-managed product information, and a planned database record for submitted enquiries. Customers can request quotes without completing an online payment.",
-  },
+  
 ];
 
 export const projectFilters = [

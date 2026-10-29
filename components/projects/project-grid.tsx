@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { projects, projectFilters } from "@/data/projects";
+import { trackEvent } from "@/lib/analytics";
 import { ProjectCard } from "./project-card";
 
 export function ProjectGrid({ limit }: { limit?: number }) {
@@ -25,7 +26,10 @@ export function ProjectGrid({ limit }: { limit?: number }) {
                 key={filter}
                 className={`filter-pill ${active === filter ? "is-selected" : ""}`}
                 aria-pressed={active === filter}
-                onClick={() => setActive(filter)}
+                onClick={() => {
+                  setActive(filter);
+                  trackEvent("project_filter", { filter: filter.toLowerCase() });
+                }}
               >
                 {filter}
                 <span>

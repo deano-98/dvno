@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { ContactForm } from "@/components/contact/contact-form";
 import { siteConfig, whatsappUrl } from "@/lib/site";
+import { AnalyticsLink } from "@/components/ui/analytics-link";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -49,11 +50,13 @@ export default function ContactPage() {
           </p>
           {/* Direct contact channels and professional profiles. */}
           <div className="contact-direct-links">
-            <a
+            <AnalyticsLink
               href={whatsappUrl("Hi Dean, I would like to discuss a project.")}
               target="_blank"
               rel="noreferrer"
               className="contact-direct-primary"
+              eventName="whatsapp_click"
+              eventParameters={{ location: "contact_direct" }}
             >
               <MessageCircle size={18} />
               <span>
@@ -61,12 +64,14 @@ export default function ContactPage() {
                 <small>Usually the quickest way to start</small>
               </span>
               <ArrowUpRight size={17} />
-            </a>
-            <a
+            </AnalyticsLink>
+            <AnalyticsLink
               href={siteConfig.github}
               target="_blank"
               rel="noreferrer"
               className="contact-direct-secondary"
+              eventName="social_click"
+              eventParameters={{ item: "github", location: "contact_direct" }}
             >
               <Github size={18} />
               <span>
@@ -74,10 +79,12 @@ export default function ContactPage() {
                 <small>Code and development work</small>
               </span>
               <ArrowUpRight size={17} />
-            </a>
-            <a
+            </AnalyticsLink>
+            <AnalyticsLink
               href={`mailto:${siteConfig.email}`}
               className="contact-direct-secondary"
+              eventName="email_click"
+              eventParameters={{ location: "contact_direct" }}
             >
               <Mail size={18} />
               <span>
@@ -85,12 +92,14 @@ export default function ContactPage() {
                 <small>{siteConfig.email}</small>
               </span>
               <ArrowUpRight size={17} />
-            </a>
-            <a
+            </AnalyticsLink>
+            <AnalyticsLink
               href={siteConfig.linkedin}
               target="_blank"
               rel="noreferrer"
               className="contact-direct-secondary"
+              eventName="social_click"
+              eventParameters={{ item: "linkedin", location: "contact_direct" }}
             >
               <Linkedin size={18} />
               <span>
@@ -98,7 +107,7 @@ export default function ContactPage() {
                 <small>Professional profile</small>
               </span>
               <ArrowUpRight size={17} />
-            </a>
+            </AnalyticsLink>
           </div>
           {/* Reassurance about the initial conversation. */}
           <div className="contact-response-note">

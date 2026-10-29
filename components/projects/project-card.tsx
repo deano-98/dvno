@@ -1,18 +1,25 @@
-import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/data/projects";
+import { AnalyticsLink } from "@/components/ui/analytics-link";
 import { ProjectVisual } from "./project-visual";
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="project-card">
-      <Link
+      <AnalyticsLink
         href={`/projects/${project.slug}`}
         className="project-card-visual-link"
         aria-label={`View ${project.title} case study`}
+        eventName="project_click"
+        eventParameters={{
+          project: project.slug,
+          project_name: project.title,
+          location: "project_card",
+          action: "card",
+        }}
       >
         <ProjectVisual project={project} />
-      </Link>
+      </AnalyticsLink>
       {/* Project details, metadata, tags, and case-study link. */}
       <div className="project-card-content">
         {/* Project number, category, and current status. */}
@@ -23,10 +30,19 @@ export function ProjectCard({ project }: { project: Project }) {
           <span className="status-label">{project.status}</span>
         </div>
         <h3>
-          <Link href={`/projects/${project.slug}`}>
+          <AnalyticsLink
+            href={`/projects/${project.slug}`}
+            eventName="project_click"
+            eventParameters={{
+              project: project.slug,
+              project_name: project.title,
+              location: "project_card",
+              action: "details",
+            }}
+          >
             {project.title}
             <ArrowUpRight size={18} />
-          </Link>
+          </AnalyticsLink>
         </h3>
         <p>{project.summary}</p>
         {/* Technologies and capabilities represented by this project. */}
@@ -37,9 +53,19 @@ export function ProjectCard({ project }: { project: Project }) {
             </span>
           ))}
         </div>
-        <Link href={`/projects/${project.slug}`} className="text-link">
+        <AnalyticsLink
+          href={`/projects/${project.slug}`}
+          className="text-link"
+          eventName="project_click"
+          eventParameters={{
+            project: project.slug,
+            project_name: project.title,
+            location: "project_card",
+            action: "details",
+          }}
+        >
           Explore case study <ArrowUpRight size={15} />
-        </Link>
+        </AnalyticsLink>
       </div>
     </article>
   );

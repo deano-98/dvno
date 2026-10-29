@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Dean Chap",
   fullName: "Dean Chapotarongo",
-  role: "Digital Solutions Developer",
+  role: "Full-Stack Developer and Digital Solutions Specialist",
   description:
     "I build modern websites and practical software systems that help businesses attract customers, streamline workflows, and turn digital opportunities into measurable results.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",

@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { siteConfig, whatsappUrl } from "@/lib/site";
+import { AnalyticsLink } from "@/components/ui/analytics-link";
 
 const links = [
   { href: "/services", label: "Services" },
@@ -72,30 +72,43 @@ export function Navbar() {
     <>
       <header className={`site-header${open ? " is-menu-open" : ""}`}>
         <nav className="nav-shell" aria-label="Main navigation">
-          <Link
+          <AnalyticsLink
             href="/"
             className="brand"
             aria-label={`${siteConfig.name}, home`}
+            eventName="navigation_click"
+            eventParameters={{ item: "home", location: "navbar", destination: "/" }}
           >
             <span className="brand-mark">d.</span>
             <span className="brand-name">
               deano<span> / digital solutions</span>
             </span>
-          </Link>
+          </AnalyticsLink>
           {/* Desktop navigation links and primary contact action. */}
           <div className="desktop-links">
             {links.map((link) => (
-              <Link
+              <AnalyticsLink
                 key={link.href}
                 href={link.href}
                 className={`nav-link ${pathname === link.href || (link.href === "/projects" && pathname.startsWith("/projects/")) ? "is-active" : ""}`}
+                eventName="navigation_click"
+                eventParameters={{
+                  item: link.href.slice(1),
+                  location: "navbar",
+                  destination: link.href,
+                }}
               >
                 {link.label}
-              </Link>
+              </AnalyticsLink>
             ))}
-            <Link href="/contact" className="nav-cta">
+            <AnalyticsLink
+              href="/contact"
+              className="nav-cta"
+              eventName="navigation_click"
+              eventParameters={{ item: "contact", location: "navbar", destination: "/contact" }}
+            >
               Let&apos;s talk <ArrowUpRight size={15} />
-            </Link>
+            </AnalyticsLink>
           </div>
           <button
             ref={toggleRef}
@@ -123,29 +136,42 @@ export function Navbar() {
         inert={!open}
       >
         <div className="mobile-overlay-links">
-          <Link href="/" onClick={() => setOpen(false)}>
+          <AnalyticsLink
+            href="/"
+            onClick={() => setOpen(false)}
+            eventName="navigation_click"
+            eventParameters={{ item: "home", location: "mobile_menu", destination: "/" }}
+          >
             <span>00</span> Home <ArrowUpRight />
-          </Link>
+          </AnalyticsLink>
           {links.map((link, index) => (
-            <Link
+            <AnalyticsLink
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
+              eventName="navigation_click"
+              eventParameters={{
+                item: link.href.slice(1),
+                location: "mobile_menu",
+                destination: link.href,
+              }}
             >
               <span>0{index + 1}</span>
               {link.label}
               <ArrowUpRight />
-            </Link>
+            </AnalyticsLink>
           ))}
         </div>
-        <a
+        <AnalyticsLink
           className="mobile-whatsapp"
           href={whatsappUrl("Hi Dean, I would like to discuss a project.")}
           target="_blank"
           rel="noreferrer"
+          eventName="whatsapp_click"
+          eventParameters={{ location: "mobile_menu" }}
         >
           Start a conversation <ArrowUpRight size={18} />
-        </a>
+        </AnalyticsLink>
         <p className="mobile-note">
           Thoughtful technology. Practical business outcomes.
         </p>

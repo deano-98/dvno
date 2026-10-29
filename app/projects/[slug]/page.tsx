@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, CheckCircle2, Github } from "lucide-react";
 import { projects } from "@/data/projects";
 import { ProjectVisual } from "@/components/projects/project-visual";
 import { CtaLink } from "@/components/ui/cta-link";
+import { AnalyticsLink } from "@/components/ui/analytics-link";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -34,9 +34,14 @@ export default async function ProjectDetailPage({
   return (
     <>
       <section className="case-hero section-wrap">
-        <Link href="/projects" className="back-link">
+        <AnalyticsLink
+          href="/projects"
+          className="back-link"
+          eventName="navigation_click"
+          eventParameters={{ item: "projects", location: "project_detail", destination: "/projects" }}
+        >
           <ArrowLeft size={15} /> All projects
-        </Link>
+        </AnalyticsLink>
         {/* Case-study title, summary, tags, and status. */}
         <div className="case-hero-copy">
           <span className="eyebrow">
@@ -61,18 +66,25 @@ export default async function ProjectDetailPage({
           {/* View GitHub button */}
           <div className="contact-direct-links">
             {project.github ? (
-              <a
+              <AnalyticsLink
                 href={project.github}
                 target="_blank"
                 rel="noreferrer"
                 className="contact-direct-secondary"
+                eventName="project_click"
+                eventParameters={{
+                  project: project.slug,
+                  project_name: project.title,
+                  location: "project_detail",
+                  action: "source_code",
+                }}
               >
                 <Github size={18} />
                 <span>
                   <strong>View GitHub</strong>
                   <small>Code and development work</small>
                 </span>
-              </a>
+              </AnalyticsLink>
             ) : (
               <div className="contact-direct-secondary">
                 <Github size={18} />
@@ -85,18 +97,25 @@ export default async function ProjectDetailPage({
           </div>
         </div>
         {project.url ? (
-          <a
+          <AnalyticsLink
             className="case-live-link"
             href={project.url}
             target="_blank"
             rel="noreferrer"
             aria-label={`View ${project.title} live site (opens in a new tab)`}
+            eventName="project_click"
+            eventParameters={{
+              project: project.slug,
+              project_name: project.title,
+              location: "project_detail",
+              action: "live_demo",
+            }}
           >
             <ProjectVisual project={project} large />
             <span className="case-live-overlay" aria-hidden="true">
               Click to view live site <ArrowUpRight size={18} />
             </span>
-          </a>
+          </AnalyticsLink>
         ) : (
           <ProjectVisual project={project} large />
         )}
@@ -181,6 +200,8 @@ export default async function ProjectDetailPage({
             </div>
             <CtaLink
               href={`/contact?service=${project.slug === "gaucho-ordering" ? "growth" : "operations"}`}
+              location="project_detail"
+              project={project.slug}
             >
               Build something similar
             </CtaLink>
@@ -194,7 +215,16 @@ export default async function ProjectDetailPage({
             <span className="eyebrow-dot" />
             NEXT CASE STUDY
           </span>
-          <Link href={`/projects/${nextProject.slug}`}>
+          <AnalyticsLink
+            href={`/projects/${nextProject.slug}`}
+            eventName="project_click"
+            eventParameters={{
+              project: nextProject.slug,
+              project_name: nextProject.title,
+              location: "next_project",
+              action: "details",
+            }}
+          >
             <span>
               {nextProject.number} / {nextProject.category}
             </span>
@@ -202,9 +232,9 @@ export default async function ProjectDetailPage({
               {nextProject.title}
               <ArrowUpRight size={25} />
             </h2>
-          </Link>
+          </AnalyticsLink>
         </div>
-        <CtaLink href="/contact" secondary>
+        <CtaLink href="/contact" secondary location="next_project_cta" project={project.slug}>
           Discuss a project
         </CtaLink>
       </section>

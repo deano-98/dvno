@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ArrowDownRight } from "lucide-react";
 import { ProjectGrid } from "@/components/projects/project-grid";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { AnalyticsLink } from "@/components/ui/analytics-link";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -37,9 +38,13 @@ export default function ProjectsPage() {
             Case studies and concepts. Outcomes are framed as targets unless
             measured results are available.
           </p>
-          <a href="#project-list">
+          <AnalyticsLink
+            href="#project-list"
+            eventName="navigation_click"
+            eventParameters={{ item: "project_list", location: "projects_hero", destination: "#project-list" }}
+          >
             Explore the work <ArrowDownRight size={15} />
-          </a>
+          </AnalyticsLink>
         </div>
       </section>
       <section

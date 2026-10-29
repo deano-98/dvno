@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   ArrowDownRight,
   ArrowRight,
@@ -16,6 +15,7 @@ import { CtaLink } from "@/components/ui/cta-link";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ProjectGrid } from "@/components/projects/project-grid";
 import { services } from "@/data/services";
+import { AnalyticsLink } from "@/components/ui/analytics-link";
 
 const capabilities = [
   {
@@ -145,9 +145,13 @@ export default function HomePage() {
         {/* Location, availability, and in-page navigation beneath the hero. */}
         <div className="hero-bottomline">
           <span>INDEPENDENT DEVELOPER / HARARE & REMOTE</span>
-          <a href="#approach">
+          <AnalyticsLink
+            href="#approach"
+            eventName="navigation_click"
+            eventParameters={{ item: "approach", location: "home_hero", destination: "#approach" }}
+          >
             SCROLL TO EXPLORE <ArrowDownRight size={14} />
-          </a>
+          </AnalyticsLink>
         </div>
       </section>
 
@@ -239,9 +243,14 @@ export default function HomePage() {
             the problem, making thoughtful trade-offs, and building solutions that can 
             adapt as needs evolve.
           </p>
-          <Link href="/projects" className="text-link text-link-light">
+          <AnalyticsLink
+            href="/projects"
+            className="text-link text-link-light"
+            eventName="navigation_click"
+            eventParameters={{ item: "projects", location: "home_dark_band", destination: "/projects" }}
+          >
             See how I approach projects <ArrowUpRight size={16} />
-          </Link>
+          </AnalyticsLink>
         </div>
         {/* Three tiles summarizing the think, build, and learn process. */}
         <div className="dark-band-side">
@@ -346,10 +355,17 @@ export default function HomePage() {
         {/* List of service packages with enquiry links. */}
         <div className="home-service-list">
           {services.map((service, index) => (
-            <Link
+            <AnalyticsLink
               href={`/contact?service=${service.id}`}
               className="home-service-row"
               key={service.id}
+              eventName="service_click"
+              eventParameters={{
+                service: service.id,
+                service_name: service.name,
+                location: "home_service_list",
+                action: "enquire",
+              }}
             >
               <span className="home-service-number">0{index + 1}</span>
               {/* Package name, category, and ideal-customer summary. */}
@@ -362,7 +378,7 @@ export default function HomePage() {
               </div>
               <strong>{service.standard}</strong>
               <ArrowUpRight size={19} />
-            </Link>
+            </AnalyticsLink>
           ))}
         </div>
       </section>
@@ -385,9 +401,14 @@ export default function HomePage() {
           {/* Final calls to discuss a project or compare packages. */}
           <div className="hero-actions">
             <CtaLink href="/contact">Discuss your project</CtaLink>
-            <Link className="closing-secondary" href="/services">
+            <AnalyticsLink
+              className="closing-secondary"
+              href="/services"
+              eventName="navigation_click"
+              eventParameters={{ item: "services", location: "home_closing", destination: "/services" }}
+            >
               View service packages <ArrowRight size={16} />
-            </Link>
+            </AnalyticsLink>
           </div>
           <span className="closing-cta-stamp">
             GOOD WORK

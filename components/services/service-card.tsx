@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { ArrowUpRight, Check } from "lucide-react";
 import type { Service } from "@/data/services";
+import { AnalyticsLink } from "@/components/ui/analytics-link";
 
 export function ServiceCard({ service }: { service: Service }) {
   return (
@@ -47,13 +47,20 @@ export function ServiceCard({ service }: { service: Service }) {
           <span className="delivery-dot" />
           {service.delivery}
         </span>
-        <Link
+        <AnalyticsLink
           href={`/contact?service=${service.id}`}
           className="button button-primary"
+          eventName="service_click"
+          eventParameters={{
+            service: service.id,
+            service_name: service.name,
+            location: "service_card",
+            action: "enquire",
+          }}
         >
           {service.cta}
           <ArrowUpRight size={16} />
-        </Link>
+        </AnalyticsLink>
       </div>
     </article>
   );

@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ArrowUpRight, CheckCircle2, LoaderCircle } from "lucide-react";
 import { useSearchParams } from "next/navigation";
+import { trackEvent } from "@/lib/analytics";
 
 const services = [
   { value: "starter", label: "Starter — Digital storefront" },
@@ -18,9 +19,11 @@ export function ContactForm() {
     "idle",
   );
   const [error, setError] = useState("");
+  const formStarted = useRef(false);
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    trackEvent("form_submit", { form_name: "contact_enquiry" });
     setStatus("sending");
     setError("");
     const form = event.currentTarget;
@@ -35,6 +38,13 @@ export function ContactForm() {
       if (!response.ok)
         throw new Error(result.error || "Please check the form and try again.");
       setStatus("ready");
+      const selectedService = ["starter", "growth", "operations"].find(
+        (service) => service === data.service,
+      );
+      trackEvent("whatsapp_click", {
+        location: "contact_form",
+        ...(selectedService ? { service: selectedService } : {}),
+      });
       // The visitor explicitly continues in WhatsApp; the site does not claim a message was sent.
       window.location.assign(result.whatsappUrl);
     } catch (err) {
@@ -48,7 +58,15 @@ export function ContactForm() {
   }
 
   return (
-    <form className="contact-form" onSubmit={onSubmit}>
+    <form
+      className="contact-form"
+      onSubmit={onSubmit}
+      onFocusCapture={() => {
+        if (formStarted.current) return;
+        formStarted.current = true;
+        trackEvent("form_start", { form_name: "contact_enquiry" });
+      }}
+    >
       {/* Enquiry form heading and brief expectation-setting copy. */}
       <div className="form-heading">
         <span className="eyebrow">
@@ -120,6 +138,14 @@ export function ContactForm() {
                 : ""
             }
             required
+            onChange={(event) => {
+              if (event.target.value === "unsure") return;
+              trackEvent("service_click", {
+                service: event.target.value,
+                location: "contact_form",
+                action: "select",
+              });
+            }}
           >
             <option value="" disabled>
               Select a service

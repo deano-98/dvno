@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowUpRight, Check, CircleHelp } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ServiceCard } from "@/components/services/service-card";
 import { maintenance, services } from "@/data/services";
 import { CtaLink } from "@/components/ui/cta-link";
+import { FaqList } from "@/components/services/faq-list";
+import { AnalyticsLink } from "@/components/ui/analytics-link";
 
 export const metadata: Metadata = {
   title: "Services & Pricing",
@@ -13,26 +14,11 @@ export const metadata: Metadata = {
 };
 
 const faqs = [
-  [
-    "How do payments work?",
-    "The standard schedule is 50% to begin, 30% at the agreed progress milestone, and 20% before launch. Milestones are confirmed in writing before work starts. Method of payment will be agreed before work begins.",
-  ],
-  [
-    "What counts as a revision?",
-    "Each package includes two revision rounds for changes within the agreed scope. New features or a material change in direction may need a separate quote.",
-  ],
-  [
-    "What happens after launch?",
-    "A 30-day defect-fix period can be agreed for bugs in the delivered scope. It does not cover new features, third-party outages, or unrelated changes. Optional monthly maintenance is available separately.",
-  ],
-  [
-    "Are hosting and subscriptions included?",
-    "No. Domain registration, hosting, database services, paid CMS plans, professional email, booking tools and other third-party charges are separate. Expected recurring costs are discussed before work begins.",
-  ],
-  [
-    "Can you quote for something outside these packages?",
-    "Yes. The Operations tier starts at $950, and the final price depends on integrations, data design, access controls, dashboards, testing and complexity. A short discovery conversation helps define the scope.",
-  ],
+  { id: "payments", question: "How do payments work?", answer: "The standard schedule is 50% to begin, 30% at the agreed progress milestone, and 20% before launch. Milestones are confirmed in writing before work starts. Method of payment will be agreed before work begins." },
+  { id: "revisions", question: "What counts as a revision?", answer: "Each package includes two revision rounds for changes within the agreed scope. New features or a material change in direction may need a separate quote." },
+  { id: "after_launch", question: "What happens after launch?", answer: "A 30-day defect-fix period can be agreed for bugs in the delivered scope. It does not cover new features, third-party outages, or unrelated changes. Optional monthly maintenance is available separately." },
+  { id: "hosting_costs", question: "Are hosting and subscriptions included?", answer: "No. Domain registration, hosting, database services, paid CMS plans, professional email, booking tools and other third-party charges are separate. Expected recurring costs are discussed before work begins." },
+  { id: "custom_quote", question: "Can you quote for something outside these packages?", answer: "Yes. The Operations tier starts at $950, and the final price depends on integrations, data design, access controls, dashboards, testing and complexity. A short discovery conversation helps define the scope." },
 ];
 
 export default function ServicesPage() {
@@ -65,9 +51,13 @@ export default function ServicesPage() {
             Founding-client offer for a focused digital storefront. Scope and
             recurring costs are confirmed before work begins.
           </p>
-          <a href="#packages">
+          <AnalyticsLink
+            href="#packages"
+            eventName="navigation_click"
+            eventParameters={{ item: "packages", location: "services_hero", destination: "#packages" }}
+          >
             Compare packages <ArrowUpRight size={15} />
-          </a>
+          </AnalyticsLink>
         </div>
       </section>
       <section
@@ -128,9 +118,19 @@ export default function ServicesPage() {
                     </li>
                   ))}
                 </ul>
-                <Link href="/contact?service=operations" className="text-link">
+                <AnalyticsLink
+                  href="/contact?service=operations"
+                  className="text-link"
+                  eventName="service_click"
+                  eventParameters={{
+                    service: "operations",
+                    service_name: "Operations",
+                    location: "maintenance_plan",
+                    action: "enquire",
+                  }}
+                >
                   Ask about this plan <ArrowUpRight size={15} />
-                </Link>
+                </AnalyticsLink>
               </article>
             ))}
           </div>
@@ -237,18 +237,7 @@ export default function ServicesPage() {
           </CtaLink>
         </div>
         {/* Expandable answers to common service questions. */}
-        <div className="faq-list">
-          {faqs.map(([question, answer], index) => (
-            <details key={question} className="faq-item">
-              <summary>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                {question}
-                <CircleHelp size={17} />
-              </summary>
-              <p>{answer}</p>
-            </details>
-          ))}
-        </div>
+        <FaqList faqs={faqs} />
       </section>
       <section className="closing-cta closing-cta-compact">
         {/* Final invitation to discuss the right project scope. */}

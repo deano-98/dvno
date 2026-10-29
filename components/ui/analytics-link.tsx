@@ -19,6 +19,7 @@ type AnalyticsLinkProps<T extends AnalyticsEventName> = {
   "aria-label"?: string;
   title?: string;
   onClick?: () => void;
+  scrollToTop?: boolean;
 };
 
 export function AnalyticsLink<T extends AnalyticsEventName>({
@@ -32,6 +33,7 @@ export function AnalyticsLink<T extends AnalyticsEventName>({
   "aria-label": ariaLabel,
   title,
   onClick: afterClick,
+  scrollToTop = false,
 }: AnalyticsLinkProps<T>) {
   const onClick = () => {
     trackEvent(eventName, eventParameters);
@@ -48,7 +50,16 @@ export function AnalyticsLink<T extends AnalyticsEventName>({
   };
 
   return href.startsWith("/") || href.startsWith("#") ? (
-    <Link {...linkProps}>{children}</Link>
+    <Link
+      {...linkProps}
+      onNavigate={
+        scrollToTop
+          ? () => window.scrollTo({ top: 0, behavior: "instant" })
+          : undefined
+      }
+    >
+      {children}
+    </Link>
   ) : (
     <a {...linkProps}>{children}</a>
   );

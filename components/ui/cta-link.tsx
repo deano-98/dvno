@@ -47,6 +47,7 @@ export function CtaLink({
         href={href}
         eventName="contact_click"
         eventParameters={{ location, ...(service ? { service } : {}), ...(project ? { project } : {}) }}
+        scrollToTop
       >
         {content}
       </AnalyticsLink>
